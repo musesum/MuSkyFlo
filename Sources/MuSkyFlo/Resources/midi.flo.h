@@ -63,12 +63,11 @@ midi { // musical instrument device interface
     output.controller << cc˚.
 
     notes {
-        dot(x: num % 12,
-            y: num _/ 12,
-            z: velo) >> sky.draw.dot
+        dot.on (x: num % 12, y: num _/ 12, z: velo) >> sky.draw.dot.on
+        dot.off(x: num % 12, y: num _/ 12, z: velo) >> sky.draw.dot.off
     }
-    input.note.on >> (notes˚., output.note.on)
-    input.note.off >> (input.note.on, output.note.off)
+    input.note.on  >> (notes.dot.on,  output.note.on)
+    input.note.off >> (notes.dot.off, output.note.off)
 
     _cc {
         main {

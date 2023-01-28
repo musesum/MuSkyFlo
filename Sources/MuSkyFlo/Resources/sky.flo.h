@@ -51,6 +51,9 @@ sky { // visual music synth
             prev (x 0…1, y 0…1) // staring point of segment
             next (x 0…1, y 0…1) // endint point of segment
         }
-        dot (x, y, z)
+        dot {
+            on (x, y, z)
+            off (x, y, z)
+        }
     }
 }
