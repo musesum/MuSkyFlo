@@ -19,7 +19,7 @@ sky { // visual music synth
     color { // false color mapping palette
         pal0 ("roygbik")    // palette 0: (r)ed (o)range (y)ellow …
         pal1 ("wKZ")        // palette 1: (w)hite blac(K) fractali(Z)e
-        xfade (val 0…1=0.5) //<~ main.anim
+        xfade (val 0…1=0.5) <~ main.anim
     }
     input { // phone and tablet pencil input
 
