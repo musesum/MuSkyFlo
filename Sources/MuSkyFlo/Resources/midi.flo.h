@@ -1,14 +1,14 @@
 midi { // musical instrument device interface 
     input { // midi input
         note { // note on/off from 0 thru 127
-            on  (num 0…127, velo 0…127, chan 1…32, port 1…16, time)
-            off (num 0…127, velo 0…127, chan 1…32, port 1…16, time)
+            on  (num 0_127, velo 0_127, chan 1_32, port 1_16, time)
+            off (num 0_127, velo 0_127, chan 1_32, port 1_16, time)
         }
-        controller (cc 0…127, val 0…127, chan 1…32, port 1…16, time)
-        afterTouch (num 0…127, val 0…127, chan 1…32, port 1…16, time)
-        pitchBend  (val 0…16384=8192, chan 1…32, port 1…16, time)
-        programChange (num 0…255, chan 1…32, port 1…16, time) //1, 632, 255
-        nrpn (num 0…16383, val 0…1, chan, time)
+        controller (cc 0_127, val 0_127, chan 1_32, port 1_16, time)
+        afterTouch (num 0_127, val 0_127, chan 1_32, port 1_16, time)
+        pitchBend  (val 0_16384=8192, chan 1_32, port 1_16, time)
+        programChange (num 0_255, chan 1_32, port 1_16, time) //1, 632, 255
+        nrpn (num 0_16383, val 0…1, chan, time)
     }
 
     output @ input
@@ -24,38 +24,44 @@ midi { // musical instrument device interface
 
     cc {
         skypad {
-            plane(cc == 11, val 0…127, chan, time)
+            plane(cc == 11, val 0_127, chan, time)
             <> model.canvas.color.plane
             
-            fade(cc == 10, val 0…127, chan, time)
+            fade(cc == 10, val 0_127, chan, time)
             <> model.canvas.color.fade
 
-            camix(cc == 9, val 0…127, chan, time)
+            camix(cc == 9, val 0_127, chan, time)
             <> model.cam.mix
 
-            repeatX(cc == 13, val 0…127, chan, time)
+            shiftX(cc == 12, val 0_127, chan, time)
+            <> model.canvas.tile.shift(x:val)
+
+            shiftY(cc == 13, val 0_127, chan, time)
+            <> model.canvas.tile.shift(y:val)
+
+            repeatX(cc == 14, val 0_127, chan, time)
             <> model.canvas.tile.repeat(x:val)
 
-            repeatY(cc == 14, val 0…127, chan, time)
+            repeatY(cc == 15, val 0_127, chan, time)
             <> model.canvas.tile.repeat(y:val)
         }
         roli {
             lightpad {
-                x (cc == 114, val 0…127, chan, time)
-                y (cc == 113, val 0…127, chan, time)
-                z (cc == 115, val 0…127, chan, time)
+                x (cc == 114, val 0_127, chan, time)
+                y (cc == 113, val 0_127, chan, time)
+                z (cc == 115, val 0_127, chan, time)
             }
             loopblock {
-                mode    (cc == 102, val 0…127, chan, time)
-                mute    (cc == 103, val 0…127, chan, time)
-                metro   (cc == 104, val 0…127, chan, time)
-                skip    (cc == 105, val 0…127, chan, time)
-                back    (cc == 106, val 0…127, chan, time)
-                play    (cc == 107, val 0…127, chan, time)
-                record  (cc == 108, val 0…127, chan, time)
-                learn   (cc == 109, val 0…127, chan, time)
-                prev    (cc == 110, val 0…127, chan, time)
-                next    (cc == 111, val 0…127, chan, time)
+                mode    (cc == 102, val 0_127, chan, time)
+                mute    (cc == 103, val 0_127, chan, time)
+                metro   (cc == 104, val 0_127, chan, time)
+                skip    (cc == 105, val 0_127, chan, time)
+                back    (cc == 106, val 0_127, chan, time)
+                play    (cc == 107, val 0_127, chan, time)
+                record  (cc == 108, val 0_127, chan, time)
+                learn   (cc == 109, val 0_127, chan, time)
+                prev    (cc == 110, val 0_127, chan, time)
+                next    (cc == 111, val 0_127, chan, time)
             }
         }
     }
@@ -76,7 +82,7 @@ midi { // musical instrument device interface
             balance     (num == 8, val, chan, time)
             panPosition (num == 10, val, chan, time)
             expression  (num == 11, val, chan, time)
-            controller  (num in 32…63, val, chan, time) // controller 0…31
+            controller  (num in 32_63, val, chan, time) // controller 0_31
             portamento {
                 time   (num == 5, val, chan, time)
                 amount (num == 84, val, chan, time)
@@ -149,11 +155,11 @@ midi { // musical instrument device interface
                 soundControl10 (num == 79, val, chan, time)
             }
             _undefined {
-                undefined_3       (num == 3       , val, chan, time)
-                undefined_9       (num == 9       , val, chan, time)
-                undefined_14_31   (num in 14…31  , val, chan, time)
-                undefined_85_90   (num in 85…90  , val, chan, time)
-                undefined_102_119 (num in 102…119, val, chan, time)
+                undefined_3       (num == 3      , val, chan, time)
+                undefined_9       (num == 9      , val, chan, time)
+                undefined_14_31   (num in 14_31  , val, chan, time)
+                undefined_85_90   (num in 85_90  , val, chan, time)
+                undefined_102_119 (num in 102_119, val, chan, time)
             }
             _mode {
                 allSoundOff       (num == 120, val, chan, time)
@@ -166,7 +172,7 @@ midi { // musical instrument device interface
             _omni {
                 omniModeOff       (num == 124, val, chan, time)
                 omniModeOn        (num == 125, val, chan, time)
-                omniMode(0…1) << (omniModeOff(0), omniModeOn(1))
+                omniMode(0_1) << (omniModeOff(0), omniModeOn(1))
             }
         }
     }

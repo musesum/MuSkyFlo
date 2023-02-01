@@ -52,7 +52,7 @@ sky { // visual music synth
             next (x 0…1, y 0…1) // endint point of segment
         }
         dot {
-            on (x, y, z)
+            on (x, y, z) <~ main.anim
             off (x, y, z)
         }
     }
