@@ -33,14 +33,12 @@ menu  {
                 slide (image "icon.cell.slide")
                 fred  (image "icon.cell.fred" )
             }
-            cam (symbol "camera") {
-                snap  (symbol "camera.shutter.button")
-                fake  (symbol "face.dashed")
-                real  (symbol "face.smiling")
-                face  (symbol "arrow.triangle.2.circlepath.camera")
+            camera (symbol "camera") {
+                stream (symbol "video")
+                facing (symbol "arrow.triangle.2.circlepath.camera")
                 mix   (symbol "camera.filters")
             }
-            net (symbol "network") {
+            network (symbol "network") {
                 bonjour (symbol "bonjour")
                 follow (symbol "shared.with.you")
                 midi (symbol "pianokeys.inverse")

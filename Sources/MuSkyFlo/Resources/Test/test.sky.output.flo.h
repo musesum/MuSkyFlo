@@ -15,7 +15,7 @@ sky { // visual music synth
         xfade(val 0…1=0.5)
     }
     input { // phone and tablet pencil input
-        azimuth(x -0.2…0.2, y -0.2…0.2)>>shader.model.pipe.draw
+        azimuth(x -0.2…0.2, y -0.2…0.2)>>shader.pipe.draw
         accel(x -0.3…0.3, y -0.3…0.3, z -0.3…0.3) { // accelerometer
             on(0…1)
         }
@@ -86,14 +86,14 @@ menu {
         model {
             canvas {
                 tile {
-                    mirror(x 0…1=0, y 0…1=0)<>shader.model.pipe.render.mirror
-                    repeat(x -1…1=0, y -1…1=0)<>shader.model.pipe.render.repeat
-                    shift(x 0…1=0.5, y 0…1=0.5)<>shader.model.pipe.draw
+                    mirror(x 0…1=0, y 0…1=0)<>shader.pipe.render.mirror
+                    repeat(x -1…1=0, y -1…1=0)<>shader.pipe.render.repeat
+                    shift(x 0…1=0.5, y 0…1=0.5)<>shader.pipe.draw
                     tilt(tog 0…1=0)<>sky.input.tilt
                 }
                 color {
                     fade(val 0…1=0)<>sky.color.xfade
-                    plane(val 0…1=0)<>shader.model.pipe.color
+                    plane(val 0…1=0)<>shader.pipe.color
                     zero(tap 0…1=0)>>sky.draw.screen.fill(0)
                     one(tap 0…1=0)>>sky.draw.screen.fill(1)
                 }
@@ -108,20 +108,20 @@ menu {
                 tilt(tog 0…1=1)<>sky.input.tilt
             }
             cell {
-                fade(val 2…3=2.2)>>shader.model.cell.fade
-                ave(val 0…1=0.5)>>shader.model.cell.ave
-                melt(val 0…1=0.5)>>shader.model.cell.melt
-                tunl(seg 0…5=1)>>shader.model.cell.tunl
-                zha(seg 0…6=2)>>shader.model.cell.zha
-                slide(seg 0…7=3)>>shader.model.cell.slide
-                fred(seg 0…4=4)>>shader.model.cell.fred
+                fade(val 2…3=2.2)>>shader.cell.fade
+                ave(val 0…1=0.5)>>shader.cell.ave
+                melt(val 0…1=0.5)>>shader.cell.melt
+                tunl(seg 0…5=1)>>shader.cell.tunl
+                zha(seg 0…6=2)>>shader.cell.zha
+                slide(seg 0…7=3)>>shader.cell.slide
+                fred(seg 0…4=4)>>shader.cell.fred
             }
             cam {
                 snap(tap 0…1=0)
-                fake(tog 0…1=0)<>shader.model.pipe.camix.on
-                real(tog 0…1=1)<>shader.model.pipe.camera.on
-                face(tog 0…1=1)<>shader.model.pipe.camera.flip
-                mix(val 0…1=0.5)<>shader.model.pipe.camix.mix
+                fake(tog 0…1=0)<>shader.pipe.camix.on
+                real(tog 0…1=1)<>shader.pipe.camera.on
+                face(tog 0…1=1)<>shader.pipe.camera.flip
+                mix(val 0…1=0.5)<>shader.pipe.camix.mix
             }
         }
     }
@@ -170,14 +170,14 @@ menu {
         model {
             canvas {
                 tile {
-                    mirror(x 0…1=0, y 0…1=0)<>shader.model.pipe.render.mirror
-                    repeat(x -1…1=0, y -1…1=0)<>shader.model.pipe.render.repeat
-                    shift(x 0…1=0.5, y 0…1=0.5)<>shader.model.pipe.draw
+                    mirror(x 0…1=0, y 0…1=0)<>shader.pipe.render.mirror
+                    repeat(x -1…1=0, y -1…1=0)<>shader.pipe.render.repeat
+                    shift(x 0…1=0.5, y 0…1=0.5)<>shader.pipe.draw
                     tilt(tog 0…1=0)<>sky.input.tilt
                 }
                 color {
                     fade(val 0…1=0)<>sky.color.xfade
-                    plane(val 0…1=0)<>shader.model.pipe.color
+                    plane(val 0…1=0)<>shader.pipe.color
                     zero(tap 0…1=0)>>sky.draw.screen.fill(0)
                     one(tap 0…1=0)>>sky.draw.screen.fill(1)
                 }
@@ -192,20 +192,20 @@ menu {
                 tilt(tog 0…1=1)<>sky.input.tilt
             }
             cell {
-                fade(val 2…3=2.2)>>shader.model.cell.fade
-                ave(val 0…1=0.5)>>shader.model.cell.ave
-                melt(val 0…1=0.5)>>shader.model.cell.melt
-                tunl(seg 0…5=1)>>shader.model.cell.tunl
-                zha(seg 0…6=2)>>shader.model.cell.zha
-                slide(seg 0…7=3)>>shader.model.cell.slide
-                fred(seg 0…4=4)>>shader.model.cell.fred
+                fade(val 2…3=2.2)>>shader.cell.fade
+                ave(val 0…1=0.5)>>shader.cell.ave
+                melt(val 0…1=0.5)>>shader.cell.melt
+                tunl(seg 0…5=1)>>shader.cell.tunl
+                zha(seg 0…6=2)>>shader.cell.zha
+                slide(seg 0…7=3)>>shader.cell.slide
+                fred(seg 0…4=4)>>shader.cell.fred
             }
             cam {
                 snap(tap 0…1=0)
-                fake(tog 0…1=0)<>shader.model.pipe.camix.on
-                real(tog 0…1=1)<>shader.model.pipe.camera.on
-                face(tog 0…1=1)<>shader.model.pipe.camera.flip
-                mix(val 0…1=0.5)<>shader.model.pipe.camix.mix
+                fake(tog 0…1=0)<>shader.pipe.camix.on
+                real(tog 0…1=1)<>shader.pipe.camera.on
+                face(tog 0…1=1)<>shader.pipe.camera.flip
+                mix(val 0…1=0.5)<>shader.pipe.camix.mix
             }
         }
     }
@@ -214,25 +214,25 @@ shader {
     model {
         cell {
             fade(0…1=0.5) {
-                on(0…1=0)>>(shader.model.cell.fade.on(0), shader.model.cell.ave.on(0), shader.model.cell.melt.on(0), shader.model.cell.tunl.on(0), shader.model.cell.slide.on(0), shader.model.cell.fred.on(0), shader.model.cell.zha.on(0))<<shader.model.cell.fade
+                on(0…1=0)>>(shader.cell.fade.on(0), shader.cell.ave.on(0), shader.cell.melt.on(0), shader.cell.tunl.on(0), shader.cell.slide.on(0), shader.cell.fred.on(0), shader.cell.zha.on(0))<<shader.cell.fade
             }
             ave(0…1=0.5) {
-                on(0…1=1)>>(shader.model.cell.fade.on(0), shader.model.cell.ave.on(0), shader.model.cell.melt.on(0), shader.model.cell.tunl.on(0), shader.model.cell.slide.on(0), shader.model.cell.fred.on(0), shader.model.cell.zha.on(0))<<shader.model.cell.ave
+                on(0…1=1)>>(shader.cell.fade.on(0), shader.cell.ave.on(0), shader.cell.melt.on(0), shader.cell.tunl.on(0), shader.cell.slide.on(0), shader.cell.fred.on(0), shader.cell.zha.on(0))<<shader.cell.ave
             }
             melt(0…1=0.5) {
-                on(0…1=0)>>(shader.model.cell.fade.on(0), shader.model.cell.ave.on(0), shader.model.cell.melt.on(0), shader.model.cell.tunl.on(0), shader.model.cell.slide.on(0), shader.model.cell.fred.on(0), shader.model.cell.zha.on(0))<<shader.model.cell.melt
+                on(0…1=0)>>(shader.cell.fade.on(0), shader.cell.ave.on(0), shader.cell.melt.on(0), shader.cell.tunl.on(0), shader.cell.slide.on(0), shader.cell.fred.on(0), shader.cell.zha.on(0))<<shader.cell.melt
             }
             tunl(0…5=1) {
-                on(0…1=0)>>(shader.model.cell.fade.on(0), shader.model.cell.ave.on(0), shader.model.cell.melt.on(0), shader.model.cell.tunl.on(0), shader.model.cell.slide.on(0), shader.model.cell.fred.on(0), shader.model.cell.zha.on(0))<<shader.model.cell.tunl
+                on(0…1=0)>>(shader.cell.fade.on(0), shader.cell.ave.on(0), shader.cell.melt.on(0), shader.cell.tunl.on(0), shader.cell.slide.on(0), shader.cell.fred.on(0), shader.cell.zha.on(0))<<shader.cell.tunl
             }
             slide(0…7=3) {
-                on(0…1=0)>>(shader.model.cell.fade.on(0), shader.model.cell.ave.on(0), shader.model.cell.melt.on(0), shader.model.cell.tunl.on(0), shader.model.cell.slide.on(0), shader.model.cell.fred.on(0), shader.model.cell.zha.on(0))<<shader.model.cell.slide
+                on(0…1=0)>>(shader.cell.fade.on(0), shader.cell.ave.on(0), shader.cell.melt.on(0), shader.cell.tunl.on(0), shader.cell.slide.on(0), shader.cell.fred.on(0), shader.cell.zha.on(0))<<shader.cell.slide
             }
             fred(0…4=4) {
-                on(0…1=0)>>(shader.model.cell.fade.on(0), shader.model.cell.ave.on(0), shader.model.cell.melt.on(0), shader.model.cell.tunl.on(0), shader.model.cell.slide.on(0), shader.model.cell.fred.on(0), shader.model.cell.zha.on(0))<<shader.model.cell.fred
+                on(0…1=0)>>(shader.cell.fade.on(0), shader.cell.ave.on(0), shader.cell.melt.on(0), shader.cell.tunl.on(0), shader.cell.slide.on(0), shader.cell.fred.on(0), shader.cell.zha.on(0))<<shader.cell.fred
             }
             zha(0…6=2) {
-                on(0…1=0)>>(shader.model.cell.fade.on(0), shader.model.cell.ave.on(0), shader.model.cell.melt.on(0), shader.model.cell.tunl.on(0), shader.model.cell.slide.on(0), shader.model.cell.fred.on(0), shader.model.cell.zha.on(0))<<shader.model.cell.zha
+                on(0…1=0)>>(shader.cell.fade.on(0), shader.cell.ave.on(0), shader.cell.melt.on(0), shader.cell.tunl.on(0), shader.cell.slide.on(0), shader.cell.fred.on(0), shader.cell.zha.on(0))<<shader.cell.zha
                 bits(2…4=3)
                 loops(11)
             }
