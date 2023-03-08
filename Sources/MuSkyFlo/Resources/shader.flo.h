@@ -22,6 +22,11 @@ shader {
             repeat (x -1…1=0, y -1…1=0)  <~ anim
             mirror (x 0…1, y 0…1) <~ anim
         }
+        cubemap {
+            frame  (x 0, y 0, w 1024, h 1024)
+            gravity(0…2)
+            on(0…1=0)
+        }
     }
     metal {
         cell {
@@ -40,6 +45,7 @@ shader {
             draw   ("pipe.draw.metal" )
             render ("pipe.render.metal")
             color  ("pipe.color.metal" )
+            cubemap("pipe.cubemap.metal" )
         }
     }
 }
