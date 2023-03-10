@@ -33,7 +33,7 @@ sky { // visual music synth
         accel.on (0…1)
 
         radius (1…92=9) // finger silhouette
-        tilt (0…1)        // use tilt
+        tilt (0…1)        
         force (0…0.5)     // pen pressure
         >> sky.draw.brush.size
     }
