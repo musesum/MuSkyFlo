@@ -3,9 +3,9 @@ shader {
     anim(0…1=0.5) << sky.main.anim
     
     cell {
-        fade  (1.62…3=1.62) { on(0…1=0) >> cell˚on(0) << .. } //<~ anim
-        ave   (0…1=0.5) { on(0…1=1) >> cell˚on(0) << .. } <~ anim
-        melt  (0…1=0.5) { on(0…1=0) >> cell˚on(0) << .. } <~ anim
+        fade  (1.62…3=1.62) { on(0…1=0) >> cell˚on(0) << .. }
+        ave   (0…1=0.5) { on(0…1=1) >> cell˚on(0) << .. } //<~ anim
+        melt  (0…1=0.5) { on(0…1=0) >> cell˚on(0) << .. } //<~ anim
         tunl  (0…5=1  ) { on(0…1=0) >> cell˚on(0) << .. }
         slide (0…7=3  ) { on(0…1=0) >> cell˚on(0) << .. }
         fred  (0…4=4  ) { on(0…1=0) >> cell˚on(0) << .. }
