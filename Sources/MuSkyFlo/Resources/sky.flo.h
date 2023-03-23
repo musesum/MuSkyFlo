@@ -10,12 +10,9 @@ sky { // visual music synth
         midi (0…1=1)   // follow midi events
         data << draw˚. // send draw events
     }
-    pipeline { // default metal pipeline at atartup
-        draw   ("draw")    // drawing layer
-        ave    ("compute") // compute layer
-        color  ("color")   // colorizing layer
-        render ("render")  // render layer al
-    }
+
+    pipeline { draw fred color render }
+
     color { // false color mapping palette
         pal0 ("roygbik")    // palette 0: (r)ed (o)range (y)ellow …
         pal1 ("wKZ")        // palette 1: (w)hite blac(K) fractali(Z)e
