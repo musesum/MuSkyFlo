@@ -40,12 +40,12 @@ shader {
         }
         pipe {
             record
-            camera ("cell.camera.metal")
-            camix  ("cell.camix.metal" )
+            camera ("pipe.camera.metal")
+            camix  ("pipe.camix.metal" )
             draw   ("pipe.draw.metal" )
             render ("pipe.render.metal")
             color  ("pipe.color.metal" )
-            cubemap("pipe.cubemap.metal" )
+            cubemap("pipe.cubemap.metal")
         }
     }
 }
