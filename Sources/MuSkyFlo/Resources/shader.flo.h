@@ -16,14 +16,16 @@ shader {
         record { on(0…1=0) }
         camera { on(0…1=0) flip (0) }
         camix  { mix(val 0…1=0.5) <~ anim }
-        color  (val 0…1=0.1) <~ anim // bitplane
+        color(val 0…1=0.1) <~ anim // bitplane
+        tile {
+            repeat(x -1…1=0, y -1…1=0)  <~ anim
+            mirror(x 0…1, y 0…1) <~ anim
+        }
         render {
-            frame  (x 0, y 0, w 1080, h 1920)
-            repeat (x -1…1=0, y -1…1=0)  <~ anim
-            mirror (x 0…1, y 0…1) <~ anim
+            frame(x 0, y 0, w 1080, h 1920)
         }
         cubemap {
-            frame  (x 0, y 0, w 1024, h 1024)
+            frame(x 0, y 0, w 1024, h 1024)
             gravity(0…2)
             on(0…1=0)
         }
@@ -46,6 +48,7 @@ shader {
             render ("pipe.render.metal")
             color  ("pipe.color.metal" )
             cubemap("pipe.cubemap.metal")
+            tile   ("pipe.tile.metal")
         }
     }
 }
