@@ -4,10 +4,10 @@ sky { // visual music synth
         run(1) // currently running
     }
     pipeline { // default metal pipeline at atartup
-        draw("draw") // drawing layer
-        ave("compute") // compute layer
-        color("color") // colorizing layer
-        render("render") // render layer al
+        draw // drawing layer
+        ave // compute layer
+        color // colorizing layer
+        render // render layer al
     }
     color { // false color mapping palette
         pal0("roygbik") // palette 0: (r)ed (o)range (y)ellow …

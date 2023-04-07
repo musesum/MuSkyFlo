@@ -11,7 +11,7 @@ sky { // visual music synth
         data << draw˚. // send draw events
     }
 
-    pipeline { draw slide tile color render }
+    pipeline { draw slide color cubemap }
 
     color { // false color mapping palette
         pal0 ("roygbik")    // palette 0: (r)ed (o)range (y)ellow …
