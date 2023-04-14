@@ -1,16 +1,23 @@
 menu  {
     SW {
         view {
-            canvas (symbol "photo.artframe") {
-                tile (image "icon.shader.tile.png") {
-                    mirror (symbol "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right")
-                    repeat (symbol "rectangle.grid.2x2" )
-                    shift (image "icon.cell.scroll")
-                    tilt  (symbol "angle")
+
+            canvas (svg "icon.canvas") {
+                plato(svg "icon.plato.dodec") {
+                    cube    (svg "icon.plato.cube")
+                    reflect (svg "icon.reflect")
+                    colorize(svg "icon.peacock")
+                    wire    (svg "icon.wireframe")
+                    go      (svg "icon.counter")
+                }
+                tile (svg "icon.tile") {
+                    mirror (svg "icon.mirror")
+                    repeat (svg "icon.repeat.arrows")
+                    shift (svg "icon.direction")
                 }
                 color(image "icon.pal.main") {
-                    fade  (symbol "slider.horizontal.below.rectangle")
-                    plane (symbol "square.3.layers.3d.down.right")
+                    fade  (svg "icon.gradient")
+                    plane (svg "icon.layers")
                     fill  (symbol "drop.fill")
                 }
                 speed (image "icon.speed") {
@@ -18,13 +25,16 @@ menu  {
                     run (symbol "goforward")
                     anim (symbol "bolt.fill")
                 }
+                motion  (symbol "gyroscope")
             }
-            brush (symbol "paintbrush.pointed") {
-                size  (symbol "circle.circle")
+            brush (svg "icon.brush") {
+                size  (svg "icon.size.dot")
                 press (symbol "scribble.variable")
+                tilt  (symbol "angle")
                 index (symbol "calendar.day.timeline.left")
+
             }
-            cell (symbol "circle.grid.3x3") {
+            cell (svg "icon.ca.grid") {
                 fade  (image "icon.cell.fade" )
                 ave   (image "icon.cell.ave"  )
                 melt  (image "icon.cell.melt" )
@@ -35,13 +45,13 @@ menu  {
             }
             camera (symbol "camera") {
                 stream (symbol "video")
-                facing (symbol "arrow.triangle.2.circlepath.camera")
-                mix   (symbol "camera.filters")
+                facing (svg "icon.camera.facing")
+                mix    (symbol "camera.filters")
             }
             network (symbol "network") {
                 bonjour (symbol "bonjour")
-                follow (symbol "shared.with.you")
-                midi (symbol "pianokeys.inverse")
+                follow  (symbol "shared.with.you")
+                midi    (symbol "pianokeys.inverse")
             }
         }
     }

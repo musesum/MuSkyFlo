@@ -1,5 +1,14 @@
 model {
+
     canvas {
+        plato {
+            cube    (tap 0…1=1)
+            reflect (tog 0…1=1)
+            colorize(tog 0…1=1)
+            wire    (tog 0…1=1)
+            go      (tog 0…1=1)
+        }
+
         tile  {
             mirror (x 0…1=0,
                     y 0…1=0) <> shader.pipe˚mirror
@@ -8,9 +17,7 @@ model {
                     y -1…1=0) <> shader.pipe˚repeat
 
             shift (x 0…1=0.5,
-                   y 0…1=0.5) <> shader.pipe.draw 
-
-            tilt  (tog 0…1=0) <> sky.input.tilt
+                   y 0…1=0.5) <> shader.pipe.draw
         }
         color {
             fade  (val 0…1=0.5) <> sky.color.xfade
@@ -22,10 +29,12 @@ model {
             run (seg 0…1=1 )   <> sky.main.run
             anim(val 0…1=0.24) <> sky.main.anim
         }
+        motion  (tog 0…1=1)
     }
     brush {
         size  (val 0…1=0.5) <> sky.draw.brush.size
         press (tog 0…1=1  ) <> sky.draw.brush.press
+        tilt  (tog 0…1=0) <> sky.input.tilt
         index (seg 1…255=127) <> sky.draw.brush.index
     }
     cell {
