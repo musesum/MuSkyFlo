@@ -15,8 +15,7 @@ sky { // visual music synth
         draw
         slide
         color
-        cubemap
-        plato
+        flatmap
     }
 
     color { // false color mapping palette
@@ -27,7 +26,7 @@ sky { // visual music synth
     input { // phone and tablet pencil input
 
         azimuth (x -0.2 … 0.2,
-                 y -0.2 … 0.2)  >> shader.pipe.draw
+                 y -0.2 … 0.2)  >> shader.compute.draw
 
         accel (x -0.3 … 0.3,
                y -0.3 … 0.3,

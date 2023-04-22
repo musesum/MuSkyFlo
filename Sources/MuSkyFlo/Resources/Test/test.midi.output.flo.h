@@ -30,8 +30,8 @@ midi { // musical instrument device interface
             plane (cc == 11, val 0…127, chan, time)<>shader.pipe.color
             xfade (cc == 10, val 0…127, chan, time)<>sky.color.xfade
             camix (cc == 9, val 0…127, chan, time)<>shader.pipe.camix.mix
-            repeatX (cc == 13, val 0…127, chan, time)<>shader.pipe.render.repeat(x : val)
-            repeatY (cc == 14, val 0…127, chan, time)<>shader.pipe.render.repeat(y : val)
+            repeatX (cc == 13, val 0…127, chan, time)<>shader.render˚repeat(x: val)
+            repeatY (cc == 14, val 0…127, chan, time)<>shader.render˚repeat(y: val)
         }
         roli {
             lightpad {

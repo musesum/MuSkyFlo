@@ -1,27 +1,18 @@
 model {
-
     canvas {
-        plato {
-            cube    (tap 0…1=1)
-            reflect (tog 0…1=1)
-            colorize(tog 0…1=1)
-            wire    (tog 0…1=1)
-            go      (tog 0…1=1)
-        }
-
         tile  {
             mirror (x 0…1=0,
-                    y 0…1=0) <> shader.pipe˚mirror
+                    y 0…1=0) <> shader.render˚mirror
 
             repeat (x -1…1=0,
-                    y -1…1=0) <> shader.pipe˚repeat
+                    y -1…1=0) <> shader.render˚repeat
 
             shift (x 0…1=0.5,
-                   y 0…1=0.5) <> shader.pipe.draw
+                   y 0…1=0.5) <> shader.compute.draw
         }
         color {
             fade  (val 0…1=0.5) <> sky.color.xfade
-            plane (val 0…1=0.1) <> shader.pipe.color
+            plane (val 0…1=0.1) <> shader.compute.color
             fill  (seg 0…1=0)   <> sky.draw.screen.fill
         }
         speed {
@@ -29,7 +20,6 @@ model {
             run (seg 0…1=1 )   <> sky.main.run
             anim(val 0…1=0.24) <> sky.main.anim
         }
-        motion  (tog 0…1=1)
     }
     brush {
         size  (val 0…1=0.5) <> sky.draw.brush.size
@@ -47,13 +37,26 @@ model {
         fred  (seg 0…4=4  ) <> shader.cell.fred
     }
     camera {
-        stream (tog 0…1=0  ) <> shader.pipe.camera.on
-        facing (tog 0…1=1  ) <> shader.pipe.camera.flip
-        mix    (val 0…1=0.5) <> shader.pipe.camix.mix
+        stream (tog 0…1=0  ) <> shader.compute.camera.on
+        facing (tog 0…1=1  ) <> shader.compute.camera.flip
+        mix    (val 0…1=0.5) <> shader.compute.camix.mix
     }
     network (symbol "network") {
         bonjour (peer "bonjour") <> sky.main.peer.bonjour
         follow  (tog 0…1=1) <> sky.main.peer.follow
         midi    (tog 0…1=1) <> sky.main.peer.midi
+    }
+}
+model.canvas.plato {
+    cube (tog 0…1=1) {
+        wire    (tog 0…1=1)
+        reflect (tog 0…1=1)
+    } <> shader.render.cubemap.on
+
+    motion  (tog 0…1=1)
+    morphing(tog 0…1=1)
+    colorize(tog 0…1=1) {
+        morphdex(val 0…1=1)
+        colors(val 0…1=1)
     }
 }

@@ -30,6 +30,9 @@ shader {
                 repeat (x -1…1=0, y -1…1=0)
                 mirror (x 0…1, y 0…1)
             }
+            cubemap {
+                on (0…1=0)
+            }
         }
     }
     file {

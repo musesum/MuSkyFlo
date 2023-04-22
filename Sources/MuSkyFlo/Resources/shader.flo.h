@@ -11,8 +11,8 @@ shader {
         fred  (0…4=4  ) { on(0…1=0) >> cell˚on(0) << .. }
         zha   (0…6=2  ) { on(0…1=0) >> cell˚on(0) << .. bits(2…4=3) loops(11)  }
     }
-    pipe {
-        draw (x 0…1=0.5, y 0…1=0.5) { on(0…1=1) } 
+    compute {
+        draw (x 0…1=0.5, y 0…1=0.5) { on(0…1=1) }
         record { on(0…1=0) }
         camera { on(0…1=0) flip (0) }
         camix  { mix(val 0…1=0.5) <~ anim }
@@ -21,7 +21,9 @@ shader {
             repeat(x -1…1=0, y -1…1=0)  <~ anim
             mirror(x 0…1, y 0…1) <~ anim
         }
-        render {
+    }
+    render {
+        flatmap {
             frame(x 0, y 0, w 1080, h 1920)
             repeat(x -1…1=0, y -1…1=0)  <~ anim
             mirror(x 0…1, y 0…1) <~ anim
@@ -32,27 +34,6 @@ shader {
             mirror(x 0…1, y 0…1) <~ anim
             gravity(0…2)
             on(0…1=0)
-        }
-    }
-    metal {
-        cell {
-            fade  ("cell.fader.metal")
-            ave   ("cell.ave.metal"  )
-            melt  ("cell.melt.metal" )
-            tunl  ("cell.tunl.metal" )
-            slide ("cell.slide.metal")
-            fred  ("cell.fred.metal" )
-            zha   ("cell.zha.metal"  )
-        }
-        pipe {
-            record
-            camera ("pipe.camera.metal")
-            camix  ("pipe.camix.metal" )
-            draw   ("pipe.draw.metal" )
-            render ("pipe.render.metal")
-            color  ("pipe.color.metal" )
-            cubemap("pipe.cubemap.metal")
-            tile   ("pipe.tile.metal")
         }
     }
 }
