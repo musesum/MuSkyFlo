@@ -8,7 +8,8 @@ _menu  {
         color(image "icon.pal.main") {
             fade  (svg "icon.gradient")
             plane (svg "icon.layers")
-            fill  (symbol "drop.fill")
+            fill_0  (symbol "drop")
+            fill_1  (symbol "drop.fill")
         }
         speed (image "icon.speed") {
             fps (symbol "speedometer")
@@ -42,18 +43,22 @@ _menu  {
         midi    (symbol "pianokeys.inverse")
     }
 }
-_menu.canvas  {
-    plato(svg "icon.plato.dodec") {
-        cube (svg "icon.plato.cube") {
-            wire    (svg "icon.wireframe")
-            reflect (svg "icon.reflect")
-        }
+_menu.canvas {
+    cube (svg "icon.plato.cube") {
+        wire    (svg "icon.wireframe")
         motion  (symbol "gyroscope")
-        morphing (svg "icon.counter")
-        colorize (svg "icon.peacock") {
-            morphdex (symbol "calendar.day.timeline.left")
-            colors (image "icon.pal.main")
-        }
+        rotate  (svg "icon.direction")
+        zoom    (svg "icon.zoom")
+        show    (svg "icon.plato.cube")
+    }
+    plato(svg "icon.plato.dodec") {
+        reflect (svg "icon.reflect")
+        counter (symbol "calendar.day.timeline.left")
+        coloriz (svg "icon.peacock")
+        morping (svg "icon.counter")
+        rotate  (svg "icon.direction")
+        show(svg "icon.plato.dodec")
+
     }
 }
 menu {

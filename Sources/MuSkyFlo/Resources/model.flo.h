@@ -1,23 +1,19 @@
 model {
     canvas {
         tile  {
-            mirror (x 0…1=0,
-                    y 0…1=0) <> shader.render˚mirror
-
-            repeat (x -1…1=0,
-                    y -1…1=0) <> shader.render˚repeat
-
-            shift (x 0…1=0.5,
-                   y 0…1=0.5) <> shader.compute.draw
+            mirror (x 0…1=0, y 0…1=0) <> shader.render˚mirror
+            repeat (x -1…1=0, y -1…1=0) <> shader.render˚repeat
+            shift (x 0…1=0.5, y 0…1=0.5) <> shader.compute.draw
         }
         color {
             fade  (val 0…1=0.5) <> sky.color.xfade
             plane (val 0…1=0.1) <> shader.compute.color
-            fill  (seg 0…1=0)   <> sky.draw.screen.fill
+            fill_0 (tap 0…1)   <> sky.draw.screen.fill(0)
+            fill_1 (tap 0…1)   <> sky.draw.screen.fill(1)
         }
         speed {
             fps (seg 0…60=60)  <> sky.main.fps
-            run (seg 0…1=1 )   <> sky.main.run
+            run (tog 0…1=1 )   <> sky.main.run
             anim(val 0…1=0.24) <> sky.main.anim
         }
     }
@@ -47,16 +43,20 @@ model {
         midi    (tog 0…1=1) <> sky.main.peer.midi
     }
 }
-model.canvas.plato {
-    cube (tog 0…1=1) {
-        wire    (tog 0…1=1)
+model.canvas {
+    cube  {
+        wire   (tog 0…1)
+        motion (tog 0…1=1)
+        rotate (x -1…1=0, y -1…1=0)
+        zoom   (val 0…1=1)
+        show   (tog 0…1=0) <> shader.render.cubemap.on
+    }
+    plato {
         reflect (tog 0…1=1)
-    } <> shader.render.cubemap.on
-
-    motion  (tog 0…1=1)
-    morphing(tog 0…1=1)
-    colorize(tog 0…1=1) {
-        morphdex(val 0…1=1)
-        colors(val 0…1=1)
+        counter (val 0…1=1)
+        coloriz (val 0…1=1)
+        morping (tog 0…1=1)
+        rotate  (x -1…1, y -1…1)
+        show    (tog 0…1=1)
     }
 }
