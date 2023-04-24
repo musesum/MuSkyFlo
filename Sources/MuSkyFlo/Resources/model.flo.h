@@ -35,6 +35,7 @@ model {
     camera {
         stream (tog 0…1=0  ) <> shader.compute.camera.on
         facing (tog 0…1=1  ) <> shader.compute.camera.flip
+        mask   (tog 0…1=1  ) 
         mix    (val 0…1=0.5) <> shader.compute.camix.mix
     }
     network (symbol "network") {
@@ -44,19 +45,21 @@ model {
     }
 }
 model.canvas {
-    cube  {
-        wire   (tog 0…1)
-        motion (tog 0…1=1)
-        rotate (x -1…1=0, y -1…1=0)
-        zoom   (val 0…1=1)
-        show   (tog 0…1=0) <> shader.render.cubemap.on
-    }
-    plato {
+    cube (tog 0…1=0) <> shader.render.cubemap.on {
         reflect (tog 0…1=1)
-        counter (val 0…1=1)
-        coloriz (val 0…1=1)
+        motion  (tog 0…1=1)
+        rotate  (x -1…1=0, y -1…1=0)
+        zoom    (val 0…1=1)
+    }
+    plato (tog 0…1=1) {
+        wire    (tog 0…1)
         morping (tog 0…1=1)
+        coloriz (tog 0…1=1) {
+            colors (val 0…1=1)
+            shadow (tog 0…1=1)
+            invert (tog 0…1=1)
+        }
+        counter (val 0…1=1)
         rotate  (x -1…1, y -1…1)
-        show    (tog 0…1=1)
     }
 }

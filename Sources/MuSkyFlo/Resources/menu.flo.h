@@ -35,6 +35,7 @@ _menu  {
     camera (symbol "camera") {
         stream (symbol "video")
         facing (svg "icon.camera.facing")
+        mask   (svg "icon.face")
         mix    (symbol "camera.filters")
     }
     network (symbol "network") {
@@ -45,22 +46,23 @@ _menu  {
 }
 _menu.canvas {
     cube (svg "icon.plato.cube") {
-        wire    (svg "icon.wireframe")
+        reflect (svg "icon.reflect")
         motion  (symbol "gyroscope")
         rotate  (svg "icon.direction")
         zoom    (svg "icon.zoom")
-        show    (svg "icon.plato.cube")
     }
     plato(svg "icon.plato.dodec") {
-        reflect (svg "icon.reflect")
-        counter (symbol "calendar.day.timeline.left")
-        coloriz (svg "icon.peacock")
+        wire    (svg "icon.wireframe")
         morping (svg "icon.counter")
+        coloriz (svg "icon.peacock") {
+            shadow (symbol "shadow")
+            invert (symbol "circle.lefthalf.filled")
+        }
+        counter (symbol "calendar.day.timeline.left")
         rotate  (svg "icon.direction")
-        show(svg "icon.plato.dodec")
-
     }
 }
+
 menu {
     SW @ _menu
     SE @ _menu

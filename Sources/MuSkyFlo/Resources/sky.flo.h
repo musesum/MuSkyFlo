@@ -15,7 +15,8 @@ sky { // visual music synth
         draw
         slide
         color
-        flatmap
+        cubemap
+        plato
     }
 
     color { // false color mapping palette
