@@ -45,21 +45,24 @@ model {
     }
 }
 model.canvas {
-    cube (tog 0…1=0) <> shader.render.cubemap.on {
+    cube (tog 0…1=0) {
         reflect (tog 0…1=1)
         motion  (tog 0…1=1)
         rotate  (x -1…1=0, y -1…1=0)
-        zoom    (val 0…1=1)
-    }
-    plato (tog 0…1=1) {
-        wire    (tog 0…1)
-        morping (tog 0…1=1)
-        coloriz (tog 0…1=1) {
-            colors (val 0…1=1)
-            shadow (tog 0…1=1)
-            invert (tog 0…1=1)
+
+        plato (tog 0…1=1) {
+            coloriz (tog 0…1=1) {
+                colors (val 0…1=1)
+                stride (val 0…1=1)
+                wire   (tog 0…1)
+                shadow (tog 0…1=1)
+                invert (tog 0…1=1)
+            }
+            morping (tog 0…1=1)
+            counter (val 0…1=1)
+            rotate  (x -1…1, y -1…1)
+            zoom    (val 0…1=1)
         }
-        counter (val 0…1=1)
-        rotate  (x -1…1, y -1…1)
+        fill (tog 0…1=1) <> shader.render.cubemap.on 
     }
 }

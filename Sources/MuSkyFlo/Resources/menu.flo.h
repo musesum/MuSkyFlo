@@ -45,21 +45,26 @@ _menu  {
     }
 }
 _menu.canvas {
-    cube (svg "icon.plato.cube") {
+    cube (symbol "cube") {
         reflect (svg "icon.reflect")
         motion  (symbol "gyroscope")
         rotate  (svg "icon.direction")
-        zoom    (svg "icon.zoom")
-    }
-    plato(svg "icon.plato.dodec") {
-        wire    (svg "icon.wireframe")
-        morping (svg "icon.counter")
-        coloriz (svg "icon.peacock") {
-            shadow (symbol "shadow")
-            invert (symbol "circle.lefthalf.filled")
+
+        plato(svg "icon.plato.dodec") {
+            coloriz (svg "icon.peacock") {
+                colors (svg "icon.peacock")
+                stride (symbol "figure.stair.stepper")
+                wire   (svg "icon.wireframe")
+                shadow (symbol "shadow")
+                invert (symbol "circle.lefthalf.filled")
+            }
+            morping (svg "icon.counter")
+            counter (symbol "calendar.day.timeline.left")
+
+            rotate  (svg "icon.direction")
+            zoom    (svg "icon.zoom")
         }
-        counter (symbol "calendar.day.timeline.left")
-        rotate  (svg "icon.direction")
+        fill(symbol "cube.fill")
     }
 }
 
