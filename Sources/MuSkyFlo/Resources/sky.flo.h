@@ -8,33 +8,23 @@ sky { // visual music synth
         bonjour // bonjour status
         follow (0…1=1) // follow remote events
         midi (0…1=1)   // follow midi events
-        data << draw˚. // send draw events
     }
-
-    pipeline {
-        draw
-        slide
-        color
-        cubemap
-        plato
-    }
-
     color { // false color mapping palette
         pal0 ("roygbik")    // palette 0: (r)ed (o)range (y)ellow …
         pal1 ("wKZ")        // palette 1: (w)hite blac(K) fractali(Z)e
         xfade (val 0…1=0.5) <~ main.anim
     }
     input { // phone and tablet pencil input
-
+        
         azimuth (x -0.2 … 0.2,
                  y -0.2 … 0.2)  >> shader.compute.draw
-
+        
         accel (x -0.3 … 0.3,
                y -0.3 … 0.3,
                z -0.3 … 0.3)  // accelerometer
-
+        
         accel.on (0…1)
-
+        
         radius (1…92=9) // finger silhouette
         tilt (0…1)
         force (0…0.5)   // pen pressure

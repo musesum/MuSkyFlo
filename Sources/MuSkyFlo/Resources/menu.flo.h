@@ -46,26 +46,22 @@ _menu  {
 }
 _menu.canvas {
     cube (symbol "cube") {
-        reflect (svg "icon.reflect")
         motion  (symbol "gyroscope")
         rotate  (svg "icon.direction")
-
-        plato(svg "icon.plato.dodec") {
-            coloriz (svg "icon.peacock") {
-                colors (svg "icon.peacock")
-                stride (symbol "figure.stair.stepper")
-                wire   (svg "icon.wireframe")
-                shadow (symbol "shadow")
-                invert (symbol "circle.lefthalf.filled")
-            }
-            morping (svg "icon.counter")
-            counter (symbol "calendar.day.timeline.left")
-
-            rotate  (svg "icon.direction")
-            zoom    (svg "icon.zoom")
-        }
-        fill(symbol "cube.fill")
+        backgr (symbol "cube.fill")
     }
+    plato(svg "icon.plato.dodec") {
+        coloriz (svg "icon.peacock") {
+            colors (symbol "figure.stair.stepper")
+            wire   (svg "icon.wireframe")
+            shadow (symbol "shadow")
+            invert (symbol "circle.lefthalf.filled")
+        }
+        morph (svg "icon.counter")
+        phase (symbol "calendar.day.timeline.left")
+        zoom   (svg "icon.zoom")
+    }
+
 }
 
 menu {

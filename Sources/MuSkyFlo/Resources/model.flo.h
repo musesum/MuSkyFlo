@@ -1,8 +1,8 @@
 model {
     canvas {
         tile  {
-            mirror (x 0…1=0, y 0…1=0) <> shader.render˚mirror
-            repeat (x -1…1=0, y -1…1=0) <> shader.render˚repeat
+            mirror (x 0…1=0, y 0…1=0) >> shader.render˚mirror
+            repeat (x -1…1=0, y -1…1=0) >> shader.render˚repeat
             shift (x 0…1=0.5, y 0…1=0.5) <> shader.compute.draw
         }
         color {
@@ -46,23 +46,19 @@ model {
 }
 model.canvas {
     cube (tog 0…1=0) {
-        reflect (tog 0…1=1)
-        motion  (tog 0…1=1)
-        rotate  (x -1…1=0, y -1…1=0)
-
-        plato (tog 0…1=1) {
-            coloriz (tog 0…1=1) {
-                colors (val 0…1=1)
-                stride (val 0…1=1)
-                wire   (tog 0…1)
-                shadow (tog 0…1=1)
-                invert (tog 0…1=1)
-            }
-            morping (tog 0…1=1)
-            counter (val 0…1=1)
-            rotate  (x -1…1, y -1…1)
-            zoom    (val 0…1=1)
+        motion (tog 0…1=1)
+        rotate (x -1…1=0, y -1…1=0)
+        backgr (tog 0…1=1)
+    } <> shader.render.cubemap.on
+    plato (tog 0…1=1) {
+        coloriz (tog 0…1=1) {
+            colors (x 1…255=1, y 0…255=0)
+            wire   (tog 0…1)
+            shadow (tog 0…1=1)
+            invert (tog 0…1=1)
         }
-        fill (tog 0…1=1) <> shader.render.cubemap.on 
-    }
+        morph (tog 0…1=1)
+        phase (x 0…1, y 0…1)
+        zoom   (val 0…1=1)
+    } <> shader.render.plato.on
 }
