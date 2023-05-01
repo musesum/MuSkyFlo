@@ -48,20 +48,22 @@ _menu.canvas {
     cube (symbol "cube") {
         motion  (symbol "gyroscope")
         rotate  (svg "icon.direction")
-        backgr (symbol "cube.fill")
+        back    (symbol "cube")
+        show    (symbol "cube.fill")
     }
-    plato(svg "icon.plato.dodec") {
-        coloriz (svg "icon.peacock") {
+    plato(svg "icon.plato.wire") {
+        shade (svg "icon.peacock") {
             colors (symbol "figure.stair.stepper")
             wire   (svg "icon.wireframe")
             shadow (symbol "shadow")
             invert (symbol "circle.lefthalf.filled")
+            style (svg "icon.peacock")
         }
         morph (svg "icon.counter")
         phase (symbol "calendar.day.timeline.left")
-        zoom   (svg "icon.zoom")
+        zoom  (svg "icon.zoom")
+        show (svg "icon.plato.show")
     }
-
 }
 
 menu {
