@@ -50,13 +50,12 @@ _menu.canvas {
         rotate  (svg "icon.direction")
         back    (symbol "cube")
         show    (symbol "cube.fill")
-    }
+    } 
     plato(svg "icon.plato.wire") {
         shade (svg "icon.peacock") {
             colors (symbol "figure.stair.stepper")
             wire   (svg "icon.wireframe")
             shadow (symbol "shadow")
-            invert (symbol "circle.lefthalf.filled")
             style (svg "icon.peacock")
         }
         morph (svg "icon.counter")

@@ -53,14 +53,13 @@ model.canvas {
     }
     plato {
         shade {
-            colors (x 0…1=0, y 0…1=0)
+            colors (x 1…255=0, y 0…1=0)
             wire   (tog 0…1)
-            shadow (tog 0…1=1)
-            invert (tog 0…1=1)
+            shadow (x 0…1=0, y 0…1=0)
             style  (seg 0…2=1)
         }
         morph (tog 0…1=1)
-        phase (x 0…1, y 0…1)
+        phase (x 0…1, y 0.9…1.1)
         zoom  (val 0…1=1)
         show  (tog 0…1=1)  <> shader.render.plato.on
     }
