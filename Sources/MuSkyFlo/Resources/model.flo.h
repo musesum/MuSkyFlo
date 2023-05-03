@@ -49,18 +49,30 @@ model.canvas {
         motion (tog 0…1=1)
         rotate (x -1…1=0, y -1…1=0)
         back (tog 0…1=1)
-        show (tog 0…1=1) <> shader.render.cubemap.on
+        show (tog 0…1=0) <> shader.render.cubemap.on
     }
     plato {
         shade {
+            phase (x 0…1, y 0.9…1.1)
             colors (x 1…255=0, y 0…1=0)
-            wire   (tog 0…1)
             shadow (x 0…1=0, y 0…1=0)
-            style  (seg 0…2=1)
+            invert (val 0…1=1)
         }
-        morph (tog 0…1=1)
-        phase (x 0…1, y 0.9…1.1)
         zoom  (val 0…1=1)
-        show  (tog 0…1=1)  <> shader.render.plato.on
+        wire  (tog 0…1)
+        morph (tog 0…1=1)
+        show  (tog 0…1=0)  <> shader.render.plato.on
     }
+}
+plato {
+    show  (tog 0…1=1)  <> shader.render.plato.on
+
+    motion (x 0…1=0,   y 0…1=0) speed  (z 0…1=0)
+    angle  (x 0…1=0,   y 0…1=0) zoom   (z 0…1=1)
+    colors (x 1…255=0, y 0…1=0)
+    shadow (x 0…1=0,   y 0…1=0) invert (z 0…1=1)
+
+    morph (tog 0…1=1)
+    phase (x 0…1, y 0.9…1.1)
+    wire  (tog 0…1)
 }
