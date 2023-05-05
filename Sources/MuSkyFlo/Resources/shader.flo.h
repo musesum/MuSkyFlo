@@ -4,7 +4,8 @@ shader {
         draw
         slide
         color
-        flatmap
+        cubemap
+        plato
     }
 
     anim(0…1=0.5) << sky.main.anim
