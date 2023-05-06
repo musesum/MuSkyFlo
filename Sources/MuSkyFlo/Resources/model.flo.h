@@ -1,15 +1,15 @@
 model {
     canvas {
         tile  {
-            mirror (x 0…1=0, y 0…1=0) >> shader.render˚mirror
-            repeat (x -1…1=0, y -1…1=0) >> shader.render˚repeat
-            shift (x 0…1=0.5, y 0…1=0.5) <> shader.compute.draw
+            mirror (x  0…1=0 , y  0…1=0)  >> shader.render˚mirror
+            repeat (x -1…1=0 , y -1…1=0)  >> shader.render˚repeat
+            shift  (x 0…1=0.5, y 0…1=0.5) <> shader.compute.draw
         }
         color {
-            fade  (val 0…1=0.5) <> sky.color.xfade
-            plane (val 0…1=0.1) <> shader.compute.color
-            fill_0 (tap 0…1)   <> sky.draw.screen.fill(0)
-            fill_1 (tap 0…1)   <> sky.draw.screen.fill(1)
+            fade   (val 0…1=0.5) <> sky.color.xfade
+            plane  (val 0…1=0.1) <> shader.compute.color
+            fill_0 (tap 0…1)     <> sky.draw.screen.fill(0)
+            fill_1 (tap 0…1)     <> sky.draw.screen.fill(1)
         }
         speed {
             fps (seg 0…60=60)  <> sky.main.fps
@@ -18,9 +18,9 @@ model {
         }
     }
     brush {
-        size  (val 0…1=0.5) <> sky.draw.brush.size
-        press (tog 0…1=1  ) <> sky.draw.brush.press
-        tilt  (tog 0…1=0) <> sky.input.tilt
+        size  (val 0…1=0.5)   <> sky.draw.brush.size
+        press (tog 0…1=1  )   <> sky.draw.brush.press
+        tilt  (tog 0…1=0)     <> sky.input.tilt
         index (seg 1…255=127) <> sky.draw.brush.index
     }
     cell {
@@ -45,7 +45,7 @@ model {
     }
 }
 model.canvas {
-    cube  {
+    cube {
         motion (tog 0…1=1)
         rotate (x -1…1=0, y -1…1=0)
         back (tog 0…1=1)
@@ -54,7 +54,8 @@ model.canvas {
     plato {
         shade {
             phase (x 0…1, y 0.9…1.1)
-            colors (x 127…128=0, y 0…1=0)
+            convex (val 0.9 … 1.1 = 1)
+            colors (x 0…255=0, y 0…1=0)
             shadow (x 0…1=0, y 0…1=0)
             invert (val 0…1=1)
         }
@@ -67,10 +68,10 @@ model.canvas {
 plato {
     show  (tog 0…1=1)  <> shader.render.plato.on
 
-    motion (x 0…1=0,   y 0…1=0) speed  (z 0…1=0)
-    angle  (x 0…1=0,   y 0…1=0) zoom   (z 0…1=1)
-    colors (x 127…128=0, y 0…1=0)
-    shadow (x 0…1=0,   y 0…1=0) invert (z 0…1=1)
+    motion (x 0…1=0,    y 0…1=0) speed  (z 0…1=0)
+    angle  (x 0…1=0,    y 0…1=0) zoom   (z 0…1=1)
+    colors (x 10…255=0, y 0…1=0)
+    shadow (x 0…1=0,    y 0…1=0) invert (z 0…1=1)
 
     morph (tog 0…1=1)
     phase (x 0…1, y 0.9…1.1)

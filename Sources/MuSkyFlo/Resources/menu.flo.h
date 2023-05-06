@@ -54,6 +54,7 @@ _menu.canvas {
     plato(svg "icon.plato.wire") {
         shade (svg "icon.peacock") {
             phase  (sym "calendar.day.timeline.left")
+            convex (svg "icon.convex")
             colors (sym "figure.stair.stepper")
             shadow (sym "shadow")
             invert (sym "circle.lefthalf.filled")
