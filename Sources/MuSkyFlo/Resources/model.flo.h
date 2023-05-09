@@ -44,36 +44,3 @@ model {
         midi    (tog 0…1=1) <> sky.main.peer.midi
     }
 }
-model.canvas {
-    cube {
-        motion (tog 0…1=1)
-        rotate (x -1…1=0, y -1…1=0)
-        back (tog 0…1=1)
-        show (tog 0…1=0) <> shader.render.cubemap.on
-    }
-    plato {
-        shade {
-            phase (x 0…1, y 0.9…1.1)
-            convex (val 0.9 … 1.1 = 1)
-            colors (x 0…255=0, y 0…1=0)
-            shadow (x 0…1=0, y 0…1=0)
-            invert (val 0…1=1)
-        }
-        zoom  (val 0…1=1) <~ main.anim
-        wire  (tog 0…1)
-        morph (tog 0…1=1)
-        show  (tog 0…1=0)  <> shader.render.plato.on
-    }
-}
-plato {
-    show  (tog 0…1=1)  <> shader.render.plato.on
-
-    motion (x 0…1=0,    y 0…1=0) speed  (z 0…1=0)
-    angle  (x 0…1=0,    y 0…1=0) zoom   (z 0…1=1)
-    colors (x 10…255=0, y 0…1=0)
-    shadow (x 0…1=0,    y 0…1=0) invert (z 0…1=1)
-
-    morph (tog 0…1=1)
-    phase (x 0…1, y 0.9…1.1)
-    wire  (tog 0…1)
-}

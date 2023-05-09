@@ -44,31 +44,3 @@ _menu  {
         midi    (sym "pianokeys.inverse")
     }
 }
-_menu.canvas {
-    cube (sym "cube") {
-        motion (sym "gyroscope")
-        rotate (svg "icon.direction")
-        back   (sym "cube")
-        show   (sym "cube.fill")
-    } 
-    plato(svg "icon.plato.wire") {
-        shade (svg "icon.peacock") {
-            phase  (sym "calendar.day.timeline.left")
-            convex (svg "icon.convex")
-            colors (sym "figure.stair.stepper")
-            shadow (sym "shadow")
-            invert (sym "circle.lefthalf.filled")
-        }
-        zoom  (svg "icon.zoom")
-        morph (svg "icon.counter")
-        wire  (svg "icon.wireframe")
-        show  (svg "icon.plato.show")
-    }
-}
-
-menu {
-    SW @ _menu
-    SE @ _menu
-    NE @ _menu
-    NW @ _menu
-}
