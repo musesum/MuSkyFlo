@@ -1,15 +1,29 @@
 model {
     canvas {
         tile  {
-            mirror (x  0…1=0 , y  0…1=0)  >> shader.render˚mirror
-            repeat (x -1…1=0 , y -1…1=0)  >> shader.render˚repeat
-            shift  (x 0…1=0.5, y 0…1=0.5) <> shader.compute.draw
+            mirror (x  0…1=0 , y  0…1=0)
+            <~ sky.main.anim
+            <> shader.render˚mirror
+
+            repeat (x -1…1=0 , y -1…1=0)
+            <~ sky.main.anim
+            <> shader.render˚repeat
+
+            shift  (x 0…1=0.5, y 0…1=0.5)
+            <~ sky.main.anim
+            <> shader.compute.draw
         }
         color {
-            fade   (val 0…1=0.5) <> sky.color.xfade
-            plane  (val 0…1=0.1) <> shader.compute.color
-            fill_0 (tap 0…1)     <> sky.draw.screen.fill(0)
-            fill_1 (tap 0…1)     <> sky.draw.screen.fill(1)
+            fade (val 0…1=0.5)
+            <~ sky.main.anim
+            <> sky.color.xfade
+
+            plane (val 0…1=0.1)
+            <~ sky.main.anim
+            <> shader.compute.color
+
+            fill_0 (tap 0…1) <> sky.draw.screen.fill(0)
+            fill_1 (tap 0…1) <> sky.draw.screen.fill(1)
         }
         speed {
             fps (seg 0…60=60)  <> sky.main.fps

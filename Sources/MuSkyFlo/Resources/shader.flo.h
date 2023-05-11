@@ -23,22 +23,22 @@ shader {
         record { on(0…1=0) }
         camera { on(0…1=0) flip (0) }
         camix  { mix(val 0…1=0.5) <~ anim }
-        color (val 0…1=0.1) <~ anim // bitplane
+        color (val 0…1=0.1) 
         tile {
-            repeat(x -1…1=0, y -1…1=0)  <~ anim
-            mirror(x 0…1, y 0…1) <~ anim
+            repeat(x -1…1=0, y -1…1=0)
+            mirror(x 0…1, y 0…1)
         }
     }
     render {
         flatmap {
             frame(x 0, y 0, w 1080, h 1920)
-            repeat(x -1…1=0, y -1…1=0) //<~ anim
-            mirror(x 0…1, y 0…1) //<~ anim
+            repeat(x -1…1=0, y -1…1=0)
+            mirror(x 0…1, y 0…1)
         }
         cubemap {
             frame(x 0, y 0, w 1080, h 1920)
-            repeat(x -1…1=0, y -1…1=0)  <~ anim
-            mirror(x 0…1, y 0…1) <~ anim
+            repeat(x -1…1=0, y -1…1=0)
+            mirror(x 0…1, y 0…1)
             gravity(0…2)
             on(0…1=0)
         }
