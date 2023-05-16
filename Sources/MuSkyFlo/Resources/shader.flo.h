@@ -1,14 +1,10 @@
 shader {
-
     pipeline {
         draw
         slide
         color
         flatmap
     }
-
-    anim(0…1=0.5) << sky.main.anim
-    render.plato.on(0…1=0)
     cell {
         fade  (1.62…3=1.62) { on(0…1=0) >> cell˚on(0) << .. }
         ave   (0…1=0.5) { on(0…1=1) >> cell˚on(0) << .. }
@@ -22,9 +18,9 @@ shader {
         draw (x 0…1=0.5, y 0…1=0.5) { on(0…1=1) }
         record { on(0…1=0) }
         camera { on(0…1=0) flip (0) }
-        camix  { mix(val 0…1=0.5) <~ anim }
+        camix  { mix(val 0…1=0.5) }
         color (val 0…1=0.1) 
-        tile {
+        tile { 
             repeat(x -1…1=0, y -1…1=0)
             mirror(x 0…1, y 0…1)
         }

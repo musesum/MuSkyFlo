@@ -2,7 +2,7 @@ sky { // visual music synth
     main { // main controls
         fps (1…60=60) // frames per second
         run (0…1=1) // currently running
-        anim(0…1=1) // animation transition speed
+        anim(val 0…1=0.9) // animation transition speed
     }
     network {
         bonjour // bonjour status
@@ -12,7 +12,7 @@ sky { // visual music synth
     color { // false color mapping palette
         pal0 ("roygbik") 
         pal1 ("wKZ")
-        xfade (val 0…1=0.5)
+        xfade (val 0 … 1 = 0.5)
     }
     input { // phone and tablet pencil input
         
@@ -27,8 +27,7 @@ sky { // visual music synth
         
         radius (1…92=9) // finger silhouette
         tilt (0…1)
-        force (0…0.5)   // pen pressure
-        >> sky.draw.brush.size
+        force (0…0.5) >> draw.brush.size
     }
     draw { // draw on metal layer
         screen { // fill 32 bit universe
@@ -38,14 +37,14 @@ sky { // visual music synth
             size (1…64=10)    // range of radius
             press (0…1=1)     // pressure changes size
             index (1…255=127) // index in 256 color palette
-                              // <<(osc.tuio.z osc.manos˚z) // redirect from OSC
+                              
         }
         line { // place holder for line drawing
             prev (x 0…1, y 0…1) // staring point of segment
             next (x 0…1, y 0…1) // endint point of segment
         }
         dot {
-            on (x, y, z) <~ main.anim
+            on (x, y, z) 
             off (x, y, z)
         }
     }

@@ -2,24 +2,24 @@ model {
     canvas {
         tile  {
             mirror (x  0…1=0 , y  0…1=0)
-            <~ sky.main.anim
+            ^ sky.main.anim
             <> shader.render˚mirror
 
             repeat (x -1…1=0 , y -1…1=0)
-            <~ sky.main.anim
+            ^ sky.main.anim
             <> shader.render˚repeat
 
             shift  (x 0…1=0.5, y 0…1=0.5)
-            <~ sky.main.anim
+            ^ sky.main.anim
             <> shader.compute.draw
         }
         color {
             fade (val 0…1=0.5)
-            <~ sky.main.anim
             <> sky.color.xfade
+            ^ sky.main.anim
 
             plane (val 0…1=0.1)
-            <~ sky.main.anim
+            ^ sky.main.anim
             <> shader.compute.color
 
             fill_0 (tap 0…1) <> sky.draw.screen.fill(0)
