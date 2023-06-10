@@ -1,17 +1,9 @@
 model {
     canvas {
         tile  {
-            mirror (x 0…1~0, y 0…1~0)
-            ^ sky.main.anim
-            <> shader.render˚mirror
-
-            repeat (x -1…1~0, y -1…1~0)
-            ^ sky.main.anim
-            <> shader.render˚repeat
-
-            shift  (x 0…1~0.5, y 0…1~0.5)
-            ^ sky.main.anim
-            <> shader.compute.draw
+            mirror (x 0…1~0, y 0…1~0) <> shader.render˚mirror ^ sky.main.anim
+            repeat (x -1…1~0, y -1…1~0)<> shader.render˚repeat ^ sky.main.anim
+            shift  (x 0…1~0.5, y 0…1~0.5) <> shader.compute.draw ^ sky.main.anim
         }
         color {
             fade (val 0…1~0.5)
