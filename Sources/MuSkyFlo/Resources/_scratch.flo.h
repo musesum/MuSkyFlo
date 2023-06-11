@@ -1,3 +1,5 @@
+
+// here is a faild rewrite of sky syntax using only ()
 model
  (canvas
   (tile
