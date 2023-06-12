@@ -3,15 +3,15 @@ model {
         plato {
             shade {
                 phase  (x 0…1, y 0.9…1.1)
-                convex (val 0.9…1.1~1) ^ sky.main.anim
+                convex (0.9…1.1~1) ^ sky.main.anim
                 colors (x 0…255~0, y 0…1~0)
                 shadow (x 0…1~0, y 0…1~0)
-                invert (val 0…1~1)
+                invert (0…1~1)
             }
-            zoom  (val 0…1~1) ^ sky.main.anim
-            wire  (tog 0…1~0)
-            morph (tog 0…1~1)
-            show  (tog 0…1~0) <> shader.render.plato.on
+            zoom  (0…1~1) ^ sky.main.anim
+            wire  (%2~0)
+            morph (%2~1)
+            show  (%2~0) <> shader.render.plato.on
         }
     }
 }

@@ -2,7 +2,7 @@ sky { // visual music synth
     main { // main controls
         fps (1…60~60) // frames per second
         run (0…1~1) // currently running
-        anim(val 0…1~0.9) // animation transition speed
+        anim(0…1~0.9) // animation transition speed
     }
     network {
         bonjour // bonjour status
@@ -12,7 +12,7 @@ sky { // visual music synth
     color { // false color mapping palette
         pal0 ("roygbik") 
         pal1 ("wKZ")
-        xfade (val 0…1~0.5)
+        xfade (0…1~0.5)
     }
     input { // phone and tablet pencil input
         azimuth  (x -0.2…0.2, y -0.2…0.2)  >> shader.compute.draw
