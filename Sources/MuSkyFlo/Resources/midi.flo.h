@@ -34,25 +34,25 @@ midi { // musical instrument device interface
         <> model.canvas.plato.shade.colors(y val)
 
         camix(cc == 9, val 0_127~0, chan, time)
-        <> model.cam.mix
+        <> model.cam.mix(val)
 
         fade(cc == 10, val 0_127~0, chan, time)
-        <> model.canvas.color.fade
+        >> model.canvas.color.fade(x val)
 
         plane(cc == 11, val 0_127~0, chan, time)
-        <> model.canvas.color.plane
+        >> model.canvas.color.fade(y val)
 
         shiftX(cc == 12, val 0_127~0, chan, time)
-        <> model.canvas.tile.shift(xval)
+        <> model.canvas.tile.shift(x val)
 
         shiftY(cc == 13, val 0_127~0, chan, time)
-        <> model.canvas.tile.shift(yval)
+        <> model.canvas.tile.shift(y val)
 
         repeatX(cc == 14, val 0_127~0, chan, time)
-        <> model.canvas.tile.repeat(xval)
+        <> model.canvas.tile.repeat(x val)
 
         repeatY(cc == 15, val 0_127~0, chan, time)
-        <> model.canvas.tile.repeat(yval)
+        <> model.canvas.tile.repeat(y val)
     }
     roli {
         lightpad {

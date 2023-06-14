@@ -7,7 +7,6 @@ _menu  {
         }
         color(img "icon.pal.main") {
             fade   (svg "icon.gradient")
-            plane  (svg "icon.layers")
             fill_0 (sym "drop")
             fill_1 (sym "drop.fill")
         }

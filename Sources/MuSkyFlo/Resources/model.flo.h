@@ -6,13 +6,11 @@ model {
             shift  (x  0…1~0.5, y  0…1~0.5) <> shader.compute.draw ^ sky.main.anim
         }
         color {
-            fade (0…1~0.5)
-            <> sky.color.xfade
+            fade (x 0…1~0.5,
+                  y 0…1~0.1)
+            >> sky.color.xfade
+            >> shader.compute.color
             ^ sky.main.anim
-
-            plane (0…1~0.1)
-            ^ sky.main.anim
-            <> shader.compute.color
 
             fill_0 (%1) <> sky.draw.screen.fill(0)
             fill_1 (%1) <> sky.draw.screen.fill(1)
