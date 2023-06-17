@@ -24,57 +24,39 @@ midi { // musical instrument device interface
 
     cc.skypad {
 
-        zoom(cc == 4, val 0_127~0, chan, time)
-        <> model.canvas.plato.zoom
-
-        convex(cc==5, val 0_127~0, chan, time)
-        <> model.canvas.plato.shade.convex
-
-        colorY(cc == 6, val 0_127~0, chan, time)
-        <> model.canvas.plato.shade.colors(y val)
-
-        camix(cc == 9, val 0_127~0, chan, time)
-        <> model.cam.mix(val)
-
-        fade(cc == 10, val 0_127~0, chan, time)
-        >> model.canvas.color.fade(x val)
-
-        plane(cc == 11, val 0_127~0, chan, time)
-        >> model.canvas.color.fade(y val)
-
-        shiftX(cc == 12, val 0_127~0, chan, time)
-        <> model.canvas.tile.shift(x val)
-
-        shiftY(cc == 13, val 0_127~0, chan, time)
-        <> model.canvas.tile.shift(y val)
-
-        repeatX(cc == 14, val 0_127~0, chan, time)
-        <> model.canvas.tile.repeat(x val)
-
-        repeatY(cc == 15, val 0_127~0, chan, time)
-        <> model.canvas.tile.repeat(y val)
-    }
-    roli {
-        lightpad {
-            x (cc == 114, val 0_127, chan, time)
-            y (cc == 113, val 0_127, chan, time)
-            z (cc == 115, val 0_127, chan, time)
-        }
-        loopblock {
-            mode    (cc == 102, val 0_127, chan, time)
-            mute    (cc == 103, val 0_127, chan, time)
-            metro   (cc == 104, val 0_127, chan, time)
-            skip    (cc == 105, val 0_127, chan, time)
-            back    (cc == 106, val 0_127, chan, time)
-            play    (cc == 107, val 0_127, chan, time)
-            record  (cc == 108, val 0_127, chan, time)
-            learn   (cc == 109, val 0_127, chan, time)
-            prev    (cc == 110, val 0_127, chan, time)
-            next    (cc == 111, val 0_127, chan, time)
-        }
+        zoom    (cc ==  4, val 0_127~0) >> model.canvas.plato.zoom
+        convex  (cc ==  5, val 0_127~0) >> model.canvas.plato.shade.convex
+        colorY  (cc ==  6, val 0_127~0) >> model.canvas.plato.shade.colors(y val)
+        camix   (cc ==  9, val 0_127~0) >> model.camera.mix(val)
+        fade    (cc == 10, val 0_127~0) >> model.canvas.color.fade(x val)
+        plane   (cc == 11, val 0_127~0) >> model.canvas.color.fade(y val)
+        shiftX  (cc == 12, val 0_127~0) >> model.canvas.tile.shift(x val)
+        shiftY  (cc == 13, val 0_127~0) >> model.canvas.tile.shift(y val)
+        repeatX (cc == 14, val 0_127~0) <> model.canvas.tile.repeat(x val)
+        repeatY (cc == 15, val 0_127~0) <> model.canvas.tile.repeat(y val)
     }
     input.controller >> cc˚.
     output.controller << cc.skypad˚.
+
+    roli {
+        lightpad {
+            x (cc == 114, val 0_127)
+            y (cc == 113, val 0_127)
+            z (cc == 115, val 0_127)
+        }
+        loopblock {
+            mode   (cc == 102, val 0_127)
+            mute   (cc == 103, val 0_127)
+            metro  (cc == 104, val 0_127)
+            skip   (cc == 105, val 0_127)
+            back   (cc == 106, val 0_127)
+            play   (cc == 107, val 0_127)
+            record (cc == 108, val 0_127)
+            learn  (cc == 109, val 0_127)
+            prev   (cc == 110, val 0_127)
+            next   (cc == 111, val 0_127)
+        }
+    }
 
     notes {
         dot.on (x num % 12, y num / 12, z velo) >> sky.draw.dot.on

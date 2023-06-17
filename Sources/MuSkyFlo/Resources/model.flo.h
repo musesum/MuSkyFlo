@@ -8,8 +8,8 @@ model {
         color {
             fade (x 0…1~0.5,
                   y 0…1~0.1)
-            >> sky.color.xfade
-            >> shader.compute.color
+            >> shader.compute.color(_0 y)
+            >> sky.color.xfade(_0 x)
             ^ sky.main.anim
 
             fill_0 (%1) <> sky.draw.screen.fill(0)

@@ -19,7 +19,7 @@ shader {
         record { on(0…1~0) }
         camera { on(0…1~0) flip (0) }
         camix  { mix(0…1~0.5) }
-        color (y 0…1~0.1)
+        color (0…1~0.1)
         tile { 
             repeat(x -1…1~0, y -1…1~0)
             mirror(x 0…1~0, y 0…1~0)
