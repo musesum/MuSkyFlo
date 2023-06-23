@@ -17,7 +17,7 @@ model {
         }
         speed {
             fps (0_60~60)  <> sky.main.fps
-            run (%2~1 )   <> sky.main.run
+            run (%2~1 )    <> sky.main.run
             anim(0…1~0.24) <> sky.main.anim
         }
     }
