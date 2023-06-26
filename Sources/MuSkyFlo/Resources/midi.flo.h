@@ -32,8 +32,8 @@ midi { // musical instrument device interface
         plane   (cc == 11, val 0_127~0) >> model.canvas.color.fade(y val)
         shiftX  (cc == 12, val 0_127~0) >> model.canvas.tile.shift(x val)
         shiftY  (cc == 13, val 0_127~0) >> model.canvas.tile.shift(y val)
-        repeatX (cc == 14, val 0_127~0) <> model.canvas.tile.repeat(x val)
-        repeatY (cc == 15, val 0_127~0) <> model.canvas.tile.repeat(y val)
+        repeatX (cc == 14, val 0_127~0) >> model.canvas.tile.repeat(x val)
+        repeatY (cc == 15, val 0_127~0) >> model.canvas.tile.repeat(y val)
     }
     input.controller >> cc˚.
     output.controller << cc.skypad˚.

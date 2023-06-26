@@ -3,6 +3,8 @@ _menu  {
         tile (svg "icon.tile") {
             mirror (svg "icon.mirror")
             repeat (svg "icon.repeat.arrows")
+            repeatx(sym "x.circle")
+            repeaty(sym "y.circle")
             shift  (svg "icon.direction")
         }
         color(img "icon.pal.main") {
