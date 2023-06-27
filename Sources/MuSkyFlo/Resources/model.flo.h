@@ -3,15 +3,13 @@ model {
         tile  {
             mirror (x  0…1~0,   y  0…1~0)   <> shader.render˚mirror ^ sky.main.anim
             repeat (x -1…1~0,   y -1…1~0)   <> shader.render˚repeat ^ sky.main.anim
-            repeatx(x -1…1~0) <> repeat
-            repeaty(y -1…1~0) <> repeat
             shift  (x  0…1~0.5, y  0…1~0.5) <> shader.compute.draw ^ sky.main.anim
         }
         color {
             fade (x 0…1~0.5,
                   y 0…1~0.1)
-            >> shader.compute.color(_0 y)
-            >> sky.color.xfade(_0 x)
+            >> shader.compute.color
+            >> sky.color.xfade
             ^ sky.main.anim
 
             fill_0 (%1) <> sky.draw.screen.fill(0)

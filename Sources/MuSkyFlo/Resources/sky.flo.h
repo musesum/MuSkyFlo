@@ -12,7 +12,7 @@ sky { // visual music synth
     color { // false color mapping palette
         pal0 ("roygbik") 
         pal1 ("wKZ")
-        xfade (0…1~0.5)
+        xfade (x 0…1~0.5)
     }
     input { // phone and tablet pencil input
         azimuth  (x -0.2…0.2, y -0.2…0.2)  >> shader.compute.draw
