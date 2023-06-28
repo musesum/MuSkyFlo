@@ -1,9 +1,9 @@
 model.canvas {
     cube {
-        motion (tog 0…1~1)
+        motion (%2~1)
         rotate (x -1…1~0, y -1…1~0)
-        back (tog 0…1~1)
-        show (tog 0…1~0) <> shader.render.cubemap.on
+        back (%2~1)
+        show (%2~0) <> shader.render.cubemap.on
     }
 }
 _menu.canvas {
