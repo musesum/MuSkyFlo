@@ -38,7 +38,7 @@ model {
     }
     camera {
         stream (%2~0)      <> shader.compute.camera.on
-        facing (%2~1)      <> shader.compute.camera.flip
+        front  (%2~1)      <> shader.compute.camera.front
         mask   (%2~1)
         mix    (0…1~0.5)   <> shader.compute.camix.mix
     }

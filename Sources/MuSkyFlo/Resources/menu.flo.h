@@ -33,7 +33,7 @@ _menu  {
     }
     camera (sym "camera") {
         stream (sym "video")
-        facing (svg "icon.camera.facing")
+        front  (svg "icon.camera.facing")
         mask   (svg "icon.face")
         mix    (sym "camera.filters")
     }

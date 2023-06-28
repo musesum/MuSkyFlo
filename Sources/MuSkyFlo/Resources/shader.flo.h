@@ -17,7 +17,7 @@ shader {
     compute {
         draw (x 0…1~0.5, y 0…1~0.5) { on(0…1~1) }
         record { on(0…1~0) }
-        camera { on(0…1~0) flip (0) }
+        camera { on(0…1~0) front (%2~1) }
         camix  { mix(0…1~0.5) }
         color (y 0…1~0.1)
         tile { 
