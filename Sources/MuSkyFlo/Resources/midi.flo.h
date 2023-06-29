@@ -24,16 +24,16 @@ midi { // musical instrument device interface
 
     cc.skypad {
 
-        zoom    (cc ==  4, val 0_127~0) >> model.canvas.plato.zoom
-        convex  (cc ==  5, val 0_127~0) >> model.canvas.plato.shade.convex
-        colorY  (cc ==  6, val 0_127~0) >> model.canvas.plato.shade.colors(y val)
-        camix   (cc ==  9, val 0_127~0) >> model.camera.mix(val)
-        fade    (cc == 10, val 0_127~0) >> model.canvas.color.fade(x val)
-        plane   (cc == 11, val 0_127~0) >> model.canvas.color.fade(y val)
-        shiftX  (cc == 12, val 0_127~0) >> model.canvas.tile.shift(x val)
-        shiftY  (cc == 13, val 0_127~0) >> model.canvas.tile.shift(y val)
-        repeatX (cc == 14, val 0_127~0) >> model.canvas.tile.repeat(x val)
-        repeatY (cc == 15, val 0_127~0) >> model.canvas.tile.repeat(y val)
+        zoom    (cc ==  4, val 0_127=0) >> model.canvas.plato.zoom
+        convex  (cc ==  5, val 0_127=0) >> model.canvas.plato.shade.convex
+        colorY  (cc ==  6, val 0_127=0) >> model.canvas.plato.shade.colors(y val)
+        camix   (cc ==  9, val 0_127=0) >> model.camera.mix(val)
+        fade    (cc == 10, val 0_127=0) >> model.canvas.color.fade(x val)
+        plane   (cc == 11, val 0_127=0) >> model.canvas.color.fade(y val)
+        shiftX  (cc == 12, val 0_127=0) >> model.canvas.tile.shift(x val)
+        shiftY  (cc == 13, val 0_127=0) >> model.canvas.tile.shift(y val)
+        repeatX (cc == 14, val 0_127=0) >> model.canvas.tile.repeat(x val)
+        repeatY (cc == 15, val 0_127=0) >> model.canvas.tile.repeat(y val)
     }
     input.controller >> cc˚.
     output.controller << cc.skypad˚.
@@ -74,7 +74,7 @@ midi { // musical instrument device interface
             expression  (num == 11, val, chan, time)
             controller  (num in 32_63, val, chan, time) // controller 0_31
             portamento {
-                time   (num == 5, val, chan, time)
+                time   (num ==  5, val, chan, time)
                 amount (num == 84, val, chan, time)
             }
         }
@@ -145,8 +145,8 @@ midi { // musical instrument device interface
                 soundControl10 (num == 79, val, chan, time)
             }
             _undefined {
-                undefined_3       (num == 3       , val, chan, time)
-                undefined_9       (num == 9       , val, chan, time)
+                undefined_3       (num == 3      , val, chan, time)
+                undefined_9       (num == 9      , val, chan, time)
                 undefined_14_31   (num in 14_31  , val, chan, time)
                 undefined_85_90   (num in 85_90  , val, chan, time)
                 undefined_102_119 (num in 102_119, val, chan, time)
