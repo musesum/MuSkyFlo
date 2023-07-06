@@ -14,11 +14,8 @@ midi { // musical instrument device interface
     output @ input
 
     skypad {
-        plane(num == 129, val 0…1, chan, time)
-        <> model.canvas.color.fade(x val)
-
-        fade(num == 130, val 0…1, chan, time)
-        <> model.canvas.color.fade(y val)
+        plane(num == 129, val 0…1, chan, time) <> model.canvas.color.fade(x val)
+        fade(num == 130, val 0…1, chan, time)  <> model.canvas.color.fade(y val)
     }
     input.nrpn >> skypad˚.
 
@@ -33,9 +30,7 @@ midi { // musical instrument device interface
         shiftX  (cc == 12, val 0_127) <> model.canvas.tile.shift(x val)
         shiftY  (cc == 13, val 0_127) <> model.canvas.tile.shift(y val)
         repeatX (cc == 14, val 0_127) <> model.canvas.tile.repeat(x val)
-        repeatY (cc == 15, val 0_127) <> model.canvas.tile.repeat(y val) 
-        repeatXX (cc == 114, val 0_127) <> model.canvas.tile.repeat(x val)
-        repeatYY (cc == 115, val 0_127) <> model.canvas.tile.repeat(y val)
+        repeatY (cc == 15, val 0_127) <> model.canvas.tile.repeat(y val)
     }
     input.controller >> cc˚.
     output.controller << cc.skypad˚.

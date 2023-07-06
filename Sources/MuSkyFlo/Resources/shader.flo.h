@@ -20,10 +20,7 @@ shader {
         camera { on(0…1~0) front (%2~1) }
         camix  { mix(0…1~0.5) }
         color (y 0…1~0.1)
-        tile { 
-            repeat(x -1…1~0, y -1…1~0)
-            mirror(x 0…1~0, y 0…1~0)
-        }
+
     }
     render {
         flatmap {
