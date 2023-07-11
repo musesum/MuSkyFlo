@@ -4,6 +4,7 @@ shader {
         slide
         color
         flatmap
+        plato
     }
     cell {
         fade  (1.62…3~1.62) >> on { on(%2~0) >> cell˚on(0) }
@@ -28,8 +29,6 @@ shader {
             repeat(x -1…1~0, y -1…1~0)
             mirror(x  0…1~0, y  0…1~0)
         }
-    }
-    render_ {
         cubemap {
             frame(x 0, y 0, w 1080, h 1920)
             repeat(x -1…1~0, y -1…1~0)
