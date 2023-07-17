@@ -32,6 +32,7 @@ midi { // musical instrument device interface
         repeatX (cc == 14, val 0_127) <> model.canvas.tile.repeat(x val)
         repeatY (cc == 15, val 0_127) <> model.canvas.tile.repeat(y val)
     }
+    //??? cc.skypad˚. >> output.note.on(num val)
     input.controller >> cc˚.
     output.controller << cc.skypad˚.
 
