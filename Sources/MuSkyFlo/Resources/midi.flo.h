@@ -7,7 +7,7 @@ midi { // musical instrument device interface
         controller (cc 0_127, val 0_127, chan 1_32, port 1_16, time)
         afterTouch (num 0_127, val 0_127, chan 1_32, port 1_16, time)
         pitchBend  (val 0_16384~8192, chan 1_32, port 1_16, time)
-        programChange (num 0_255, chan 1_32, port 1_16, time) // ??
+        program (num 0_255, chan 1_32, port 1_16, time)
         nrpn (num 0_16383, val 0…1, chan, time)
     }
 

@@ -37,13 +37,13 @@ model {
         index (1_255~127) <> sky.draw.brush.index
     }
     cell {
-        fade  (0.2…2~1)  <> shader.cell.fade
-        ave   (0…1~0.5)  <> shader.cell.ave
-        melt  (0…1~0.5)  <> shader.cell.melt
-        tunl  (0_5~1)    <> shader.cell.tunl
-        zha   (0_6~2)    <> shader.cell.zha
-        slide (0_7~3)    <> shader.cell.slide
-        fred  (0_4~4)    <> shader.cell.fred
+        fade  (0.2…2~1) <> shader.cell.fade
+        ave   (0…1~0.5) <> shader.cell.ave
+        melt  (0…1~0.5) <> shader.cell.melt
+        tunl  (0_5~1)   <> shader.cell.tunl
+        zha   (0_6~2)   <> shader.cell.zha
+        slide (0_7~3)   <> shader.cell.slide
+        fred  (0_4~4)   <> shader.cell.fred
     }
     camera {
         stream (%2~0) <> shader.compute.camera.on
