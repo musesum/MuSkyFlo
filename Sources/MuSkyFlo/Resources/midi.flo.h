@@ -15,7 +15,7 @@ midi { // musical instrument device interface
 
     skypad {
         plane(num == 129, val 0…1, chan, time) <> model.canvas.color.fade(x val)
-        fade(num == 130, val 0…1, chan, time)  <> model.canvas.color.fade(y val)
+        fade (num == 130, val 0…1, chan, time) <> model.canvas.color.fade(y val)
     }
     input.nrpn >> skypad˚.
 
@@ -24,7 +24,7 @@ midi { // musical instrument device interface
         zoom    (cc ==  4, val 0_127) <> model.canvas.plato.zoom
         convex  (cc ==  5, val 0_127) <> model.canvas.plato.shade.convex
         colorY  (cc ==  6, val 0_127) <> model.canvas.plato.shade.colors(y val)
-        camix   (cc ==  9, val 0_127) <> model.camera.mix(val)
+        camix   (cc ==  9, val 0_127) <> model.camix.mix(val)
         fade    (cc == 10, val 0_127) <> model.canvas.color.fade(x val)
         plane   (cc == 11, val 0_127) <> model.canvas.color.fade(y val)
         shiftX  (cc == 12, val 0_127) <> model.canvas.tile.shift(x val)
@@ -69,7 +69,7 @@ midi { // musical instrument device interface
             balance     (num == 8, val, chan, time)
             panPosition (num == 10, val, chan, time)
             expression  (num == 11, val, chan, time)
-            controller  (num in 32_63, val, chan, time) // controller 0_31
+            controller  (num in 32_63, val, chan, time)
             portamento {
                 time   (num ==  5, val, chan, time)
                 amount (num == 84, val, chan, time)
@@ -79,9 +79,9 @@ midi { // musical instrument device interface
             hold    (num == 64, val, chan, time)
             porta   (num == 65, val, chan, time)
             sosta   (num == 66, val, chan, time)
-            _soft    (num == 67, val, chan, time)
-            _legato  (num == 68, val, chan, time)
-            _hold2   (num == 69, val, chan, time)
+            _soft   (num == 67, val, chan, time)
+            _legato (num == 68, val, chan, time)
+            _hold2  (num == 69, val, chan, time)
         }
 
         _main2 {
@@ -89,8 +89,8 @@ midi { // musical instrument device interface
             breathCtrl  (num == 2, val, chan, time)
             footPedal   (num == 4, val, chan, time)
             dataEntry   (num == 6, val, chan, time)
-            effectControl1 (num == 12, val, chan, time)
-            effectControl2 (num == 13, val, chan, time)
+            effectCtrl1 (num == 12, val, chan, time)
+            effectCtrl2 (num == 13, val, chan, time)
         }
         _sound {
             soundVariation  (num == 70, val, chan, time)
@@ -127,10 +127,10 @@ midi { // musical instrument device interface
             phaserLevel  (num == 95, val, chan, time)
         }
         _parameter {
-            dataButtonIncrement       (num == 96, val, chan, time)
-            dataButtonDecrement       (num == 97, val, chan, time)
-            nonregisteredParameterLSB (num == 98, val, chan, time)
-            nonregisteredParameterMSB (num == 99, val, chan, time)
+            dataButtonIncrement       (num ==  96, val, chan, time)
+            dataButtonDecrement       (num ==  97, val, chan, time)
+            nonregisteredParameterLSB (num ==  98, val, chan, time)
+            nonregisteredParameterMSB (num ==  99, val, chan, time)
             registeredParameterLSB    (num == 100, val, chan, time)
             registeredParameterMSB    (num == 101, val, chan, time)
         }
