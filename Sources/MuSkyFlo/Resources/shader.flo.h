@@ -7,13 +7,13 @@ shader {
         plato
     }
     cell {
-        fade  (0.2…2~0.3) >> on(1) { on(%2~0) >> cell˚on(0) }
-        ave   (0…1~0.5  ) >> on(1) { on(%2~1) >> cell˚on(0) }
-        melt  (0…1~0.5  ) >> on(1) { on(%2~0) >> cell˚on(0) }
-        tunl  (0_5~1    ) >> on(1) { on(%2~0) >> cell˚on(0) }
-        slide (0_7~3    ) >> on(1) { on(%2~0) >> cell˚on(0) }
-        fred  (0_4~4    ) >> on(1) { on(%2~0) >> cell˚on(0) }
-        zha   (0_6~2    ) >> on(1) { on(%2~0) >> cell˚on(0) bits(2…4~3) loops(11) }
+        fade  (0.2…2~0.3) >> on(1) { on(%2) >> cell˚on(0) }
+        ave   (0…1~0.5  ) >> on(1) { on(%2) >> cell˚on(0) }
+        melt  (0…1~0.5  ) >> on(1) { on(%2) >> cell˚on(0) }
+        tunl  (0_5~1    ) >> on(1) { on(%2) >> cell˚on(0) }
+        slide (0_7~3    ) >> on(1) { on(%2) >> cell˚on(0) }
+        fred  (0_4~4    ) >> on(1) { on(%2) >> cell˚on(0) }
+        zha   (0_6~2    ) >> on(1) { on(%2) >> cell˚on(0) bits(2…4~3) loops(11) }
     }
     compute {
         draw (x 0…1~0.5, y 0…1~0.5) { on(0…1~1) }
