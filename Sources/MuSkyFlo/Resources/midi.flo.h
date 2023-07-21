@@ -4,43 +4,40 @@ midi { // musical instrument device interface
             on  (num 0_127, velo 0_127, chan 1_32, port 1_16, time)
             off (num 0_127, velo 0_127, chan 1_32, port 1_16, time)
         }
-        controller (cc 0_127, val 0_127, chan 1_32, port 1_16, time)
         afterTouch (num 0_127, val 0_127, chan 1_32, port 1_16, time)
         pitchBend  (val 0_16384~8192, chan 1_32, port 1_16, time)
         program (num 0_255, chan 1_32, port 1_16, time)
-        nrpn (num 0_16383, val 0…1, chan, time)
+        nrpn (num 0_16383, val 0…1, chan, time) >> skypad˚.
+        controller (cc 0_127, val 0_127, chan 1_32, port 1_16, time) >> cc˚.
     }
 
-    output @ input
+    output @ input { controller << cc˚. }
 
     skypad {
         plane(num == 129, val 0…1, chan, time) <> model.canvas.color.fade(x val)
         fade (num == 130, val 0…1, chan, time) <> model.canvas.color.fade(y val)
     }
-    input.nrpn >> skypad˚.
 
     cc {
         skypad {
-
-            zoom    (cc ==  4, val 0_127) <> model.canvas.plato.zoom
-            convex  (cc ==  5, val 0_127) <> model.canvas.plato.shade.convex
-            colorY  (cc ==  6, val 0_127) <> model.canvas.plato.shade.colors(y val)
-            camix   (cc ==  9, val 0_127) <> model.camix.mix(val)
-            fade    (cc == 10, val 0_127) <> model.canvas.color.fade(x val)
-            plane   (cc == 11, val 0_127) <> model.canvas.color.fade(y val)
-            shiftX  (cc == 12, val 0_127) <> model.canvas.tile.shift(x val)
-            shiftY  (cc == 13, val 0_127) <> model.canvas.tile.shift(y val)
-            repeatX (cc == 14, val 0_127) <> model.canvas.tile.repeat(x val)
-            repeatY (cc == 15, val 0_127) <> model.canvas.tile.repeat(y val)
+            zoom    (cc ==  4, val) <> model.canvas.plato.zoom
+            convex  (cc ==  5, val) <> model.canvas.plato.shade.convex
+            colorY  (cc ==  6, val) <> model.canvas.plato.shade.colors(y val)
+            camix   (cc ==  9, val) <> model.camix.mix(val)
+            fade    (cc == 10, val) <> model.canvas.color.fade(x val)
+            plane   (cc == 11, val) <> model.canvas.color.fade(y val)
+            shiftX  (cc == 12, val) <> model.canvas.tile.shift(x val)
+            shiftY  (cc == 13, val) <> model.canvas.tile.shift(y val)
+            repeatX (cc == 14, val) <> model.canvas.tile.repeat(x val)
+            repeatY (cc == 15, val) <> model.canvas.tile.repeat(y val)
+            // skypad˚. >> output.note.on(num val)
         }
-
         roli {
             lightpad {
-                x (cc == 114, val 0_127) <> sky.draw.dot.on(x val)
-                y (cc == 113, val 0_127) <> sky.draw.dot.on(y val)
-                z (cc == 115, val 0_127) <> (sky.draw.dot.on(z val),
-                                             sky.color.xfade(x val))
-
+                x (cc == 114, val 0_127) //<> sky.draw.dot.on(x val)
+                y (cc == 113, val 0_127) //<> sky.draw.dot.on(y val)
+                z (cc == 115, val 0_127) //<> (sky.draw.dot.on(z val),
+                                         //    sky.color.xfade(x val))
             }
             loopblock {
                 mode   (cc == 102, val 0_127)
@@ -56,17 +53,13 @@ midi { // musical instrument device interface
             }
         }
     }
-    //??? cc.skypad˚. >> output.note.on(num val)
-    input.controller >> cc˚.
-    output.controller << cc˚.
-
 
     notes {
         dot.on (x num % 12, y num / 12, z velo) >> sky.draw.dot.on
         dot.off(x num % 12, y num / 12, z velo) >> sky.draw.dot.off
+        input.note.on  >> (notes.dot.on,  output.note.on)
+        input.note.off >> (notes.dot.off, output.note.off)
     }
-    input.note.on  >> (notes.dot.on,  output.note.on)
-    input.note.off >> (notes.dot.off, output.note.off)
 
     _cc {
         main {

@@ -11,7 +11,7 @@ model {
             zoom  (0…1~0.5) ^ sky.main.anim
             wire  (%2~0)
             morph (%2~1)
-            show  (%2~0) <> shader.render.plato.on
+            show  (%2~0) <> shader.render.plato.on 
         }
     }
 }

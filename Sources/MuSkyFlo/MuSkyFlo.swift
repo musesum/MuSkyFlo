@@ -9,13 +9,13 @@ public struct MuSkyFlo {
 
         guard let path = Bundle.module.path(forResource: filename,
                                             ofType: ext)  else {
-            print("🚫 MuSkyFlo:: couldn't find file: \(filename)")
+            print("⁉️ MuSkyFlo:: couldn't find file: \(filename)")
             return nil
         }
         do {
             return try String(contentsOfFile: path) }
         catch {
-            print("🚫 MuSkyFlo \(#function) error:\(error) loading contents of:\(path)")
+            print("⁉️ MuSkyFlo \(#function) error:\(error) loading contents of:\(path)")
         }
         return nil
     }

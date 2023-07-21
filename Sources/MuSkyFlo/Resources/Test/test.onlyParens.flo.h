@@ -1,5 +1,5 @@
 
-// here is a faild rewrite of sky syntax using only ()
+'here is a faild rewrite of sky syntax using only ()
 model
 (canvas
  (tile
@@ -53,15 +53,12 @@ model
   midi    (tog, 0…1~1) <> sky.main.peer.midi
   )
  )
-c   n % 12 in major
-c♯ (n-1)%12 in major
-c♭ (n+1)%12 in major
 
 
 _dorian     ( 2 1 2 2 2 1 2           )
 _phrygian   (   1 2 2 2 1 2 2         )
-_lydian     (     2 2 2 1 2 2 1       ) fgabcde
-_mixolydian (       2 2 1 2 2 1 2     ) cdefgab
+_lydian     (     2 2 2 1 2 2 1       ) 'fgabcde'
+_mixolydian (       2 2 1 2 2 1 2     ) 'cdefgab'
 _aeolian    (         2 1 2 2 1 2 2   )
 _locrian    (           1 2 2 1 2 2 2 )
 
@@ -72,35 +69,34 @@ mixolydian (0       2 4 5 7 9 10 12     )
 aeolian    (0         2 3 5 7 8 10 12   )
 locrian    (0           1 3 5 6 8 10 12 )
 
-
-
-
-
-
 _natural_minor  (2, 1, 2, 2, 1, 2, 2)
 _harmonic_minor (2, 1, 2, 2, 1, 3, 1)
 _melodic_minor  (2, 1, 2, 2, 2, 2, 1)
 
 _major          (2 2 1 2 2 2 1 )
 major          (0 2 4 5 7 9 11)
+c   n % 12 in major
+c♯ (n-1)%12 in major
+c♭ (n+1)%12 in major
+
 
 
 model.canvas
-(cube
- (motion (tog, 0…1~1)
-  rotate (vxy, x -1…1~0, y -1…1~0)
-  back   (tog, 0…1~1)
-  show   (tog, 0…1~0) <> shader.render.cubemap.on
+ (cube
+  (motion (tog, 0…1~1)
+   rotate (vxy, x -1…1~0, y -1…1~0)
+   back   (tog, 0…1~1)
+   show   (tog, 0…1~0) <> shader.render.cubemap.on
+   )
   )
- )
 _menu.canvas
-(cube ("cube.sf")
- (motion ("gyroscope.sf")
-  rotate ("icon.direction.svg")
-  back   ("cube.sf")
-  show   ("cube.fill.sf")
+ (cube ("cube.sf")
+  (motion ("gyroscope.sf")
+   rotate ("icon.direction.svg")
+   back   ("cube.sf")
+   show   ("cube.fill.sf")
+   )
   )
- )
 
 model
 (
@@ -248,202 +244,254 @@ _menu.canvas ("icon.canvas.svg")
   show  ("icon.plato.show.svg")
   )
 
- midi.cc.skypad
+ midi
  (
-  zoom    (cc ≈  4, chan, time, val 0_127 <> model.canvas.plato.zoom)
-  convex  (cc ≈  5, chan, time, val 0_127 <> model.canvas.plato.shade.convex)
-  colorY  (cc ≈  6, chan, time, val 0_127 <> model.canvas.plato.shade.colors.y)
-  camix   (cc ≈  9, chan, time, val 0_127 <> model.camix.mix)
-  fade    (cc ≈ 10, chan, time, val 0_127 <> model.canvas.color.fade)
-  plane   (cc ≈ 11, chan, time, val 0_127 <> model.canvas.color.plane)
-  shift.x (cc ≈ 12, chan, time, val 0_127 <> model.canvas.tile.shift.x)
-  shift.y (cc ≈ 13, chan, time, val 0_127 <> model.canvas.tile.shift.y)
-  repeat.x(cc ≈ 14, chan, time, val 0_127 <> model.canvas.tile.repeat.x)
-  repeat.y(cc ≈ 15, chan, time, val 0_127 <> model.canvas.tile.repeat.y)
+  input
+  (
+   note
+   (on, off).(num 0_127, velo 0_127, chan 1_32, port 1_16, time)
+   controller (cc 0_127, val 0_127, chan 1_32, port 1_16, time) >> cc˚.
+   afterTouch (num 0_127, val 0_127, chan 1_32, port 1_16, time)
+   pitchBend  (val 0_16384~8192, chan 1_32, port 1_16, time)
+   program (num 0_255, chan 1_32, port 1_16, time)
+   nrpn (num 0_16383, val 0…1, chan, time)
+   )
+
+  output @ input
+  (
+   controller << cc˚.
+   )
+
+  cc
+  (
+   skypad
+   (
+    zoom    (cc ==  4, chan, time, val 0_127 <> model.canvas.plato.zoom)
+    convex  (cc ==  5, chan, time, val 0_127 <> model.canvas.plato.shade.convex)
+    colorY  (cc ==  6, chan, time, val 0_127 <> model.canvas.plato.shade.colors.y)
+    camix   (cc ==  9, chan, time, val 0_127 <> model.camix.mix)
+    fade    (cc == 10, chan, time, val 0_127 <> model.canvas.color.fade)
+    plane   (cc == 11, chan, time, val 0_127 <> model.canvas.color.plane)
+
+    shift
+    (
+     x (cc == 12, chan, time, val 0_127 <> model.canvas.tile.shift.x)
+     y (cc == 13, chan, time, val 0_127 <> model.canvas.tile.shift.y)
+     )
+    repeat
+    (
+     x(cc == 14, chan, time, val 0_127 <> model.canvas.tile.repeat.x)
+     y(cc == 15, chan, time, val 0_127 <> model.canvas.tile.repeat.y)
+    )
+   roli
+   (
+    lightpad
+    (
+     x (cc == 114, val 0_127) <> sky.draw.dot.on(x val)
+     y (cc == 113, val 0_127) <> sky.draw.dot.on(y val)
+     z (cc == 115, val 0_127) <> (sky.draw.dot.on(z val),
+                                  sky.color.xfade(x val))
+     )
+    loopblock
+    (
+     mode   (cc == 102, val 0_127)
+     mute   (cc == 103, val 0_127)
+     metro  (cc == 104, val 0_127)
+     skip   (cc == 105, val 0_127)
+     back   (cc == 106, val 0_127)
+     play   (cc == 107, val 0_127)
+     record (cc == 108, val 0_127)
+     learn  (cc == 109, val 0_127)
+     prev   (cc == 110, val 0_127)
+     next   (cc == 111, val 0_127)
+     )
+    )
+   )
   )
  sky 'visual music synth'
  (
   main 'main controls'
   (
-   fps   1…60~60 'frames per second'
-    run   0…1~1   'currently running'
-    anim  0…1~0.9 'animation transition speed'
-    )
-   network
+   fps  (1…60~60) 'frames per second'
+   run  (0…1~1  ) 'currently running'
+   anim (0…1~0.9) 'animation transition speed'
+   )
+  network
+  (
+   bonjour       'bonjour status'
+   follow 0…1~1  'follow remote events'
+   midi   0…1~1  'follow midi events'
+   )
+  color 'false color mapping palette'
+  (
+   pal0 "roygbik"
+   pal1 "wKZ"
+   xfade 0…1~0.5
+   )
+  input 'phone and tablet pencil input'
+  (
+   azimuth  (x -0.2…0.2, y -0.2…0.2)  >> shader.compute.draw
+   accel    (x -0.3…0.3, y -0.3…0.3, z -0.3…0.3, on 0…1~1)  'accelerometer'
+   radius   1…92~9     'finger silhouette'
+   tilt     0…1~1
+   force    0…0.5  >> draw.brush.size
+   )
+  draw  'draw on metal layer'
+  (
+   screen.fill 0…1~0  'fill cellular automata universe'
+   brush              'type of brush and range'
    (
-    bonjour         'bonjour status'
-    (
-     follow 0…1~1  'follow remote events'
-     midi   0…1~1  'follow midi events'
-     )
-    color 'false color mapping palette'
-    (pal0"roygbik", pal1"wKZ", xfade 0…1~0.5)
-    input 'phone and tablet pencil input'
-    (
-     azimuth  (x -0.2…0.2, y -0.2…0.2)  >> shader.compute.draw
-     accel    (x -0.3…0.3, y -0.3…0.3, z -0.3…0.3, on 0…1~1)  'accelerometer'
-     radius   1…92~9     'finger silhouette'
-     tilt     0…1~1
-     force    0…0.5  >> draw.brush.size
-     )
-    draw                   'draw on metal layer'
-    (
-     screen.fill 0…1~0   'fill cellular automata universe'
-     brush               'type of brush and range'
-     (
-      size  1…64~10     'range of radius'
-      press 0…1~1       'pressure changes size'
-      index 1…255~127   'index in 256 color palette'
-      )
-     line                  'place holder for line drawing'
-     (
-      prev (x 0…1, y 0…1) 'staring point of segment
-      next (x 0…1, y 0…1) 'endint point of segment
-      )
-     dot
-     (
-      on (x, y, z)
-      off (x, y, z)
-      )
-     )
+    size  1…64~10     'range of radius'
+    press 0…1~1       'pressure changes size'
+    index 1…255~127   'index in 256 color palette'
     )
-   shader
+   line                 'place holder for line drawing'
    (
-    pipeline(draw, slide, color, flatmap)
-    cell
-    (
-     fade  (1.62…3~1.62 >> on(1), on %2~0 >> cell˚on(0))
-     ave   (0…1~0.5     >> on(1), on %2~1 >> cell˚on(0))
-     melt  (0…1~0.5     >> on(1), on %2~0 >> cell˚on(0))
-     tunl  (0…5~1       >> on(1), on %2~0 >> cell˚on(0))
-     slide (0…7~3       >> on(1), on %2~0 >> cell˚on(0))
-     fred  (0…4~4       >> on(1), on %2~0 >> cell˚on(0))
-     zha   (0…6~2       >> on(1), on %2~0 >> cell˚on(0), bit 2…4~3, loops 11)
-     )
-    compute
-    (
-     draw (x 0…1~0.5, y 0…1~0.5, on 0…1~1)
-     record (on 0…1~0)
-     camera (on 0…1~0, flip 0)
-     camix  (mix 0…1~0.5)
-     color (0…1~0.1)
-     tile
-     (
-      repeat(x -1…1~0, y -1…1~0)
-      mirror(x 0…1~0, y 0…1~0)
-      )
-     )
-    render
-    (
-     flatmap
-     (
-      frame(x 0, y 0, w 1080, h 1920)
-      repeat(x -1…1~0, y -1…1~0)
-      mirror(x  0…1~0, y  0…1~0)
-      )
-     cubemap
-     (
-      frame(x 0, y 0, w 1080, h 1920)
-      repeat(x -1…1~0, y -1…1~0)
-      mirror(x 0…1~0, y 0…1~0)
-      gravity(0…2~0)
-      on(0…1~0)
-      )
-     plato
-     ( on(0…1~0) )
-     )
+    prev (x 0…1, y 0…1) 'staring point of segment
+    next (x 0…1, y 0…1) 'endint point of segment
     )
+   dot
+   (on, off).(x, y, z)
+   )
+  )
+ shader
+ (
+  pipeline(draw, slide, color, flatmap)
+  cell
+  (
+   fade  (1.2…3   , on %2)
+   ave   (0…1~0.5 , on %2)
+   melt  (0…1~0.5 , on %2)
+   tunl  (0…5~1   , on %2)
+   slide (0…7~3   , on %2)
+   fred  (0…4~4   , on %2)
+   zha   (0…6~2   , on %2, bit 2…4~3, loops 11)
+   cell.* >> .on(1)
+   cell˚on >> cell˚on(0)
+   )
+  compute
+  (
+   draw (x 0…1~0.5, y 0…1~0.5, on 0…1~1)
+   record (on 0…1~0)
+   camera (on 0…1~0, flip 0)
+   camix  (mix 0…1~0.5)
+   color (0…1~0.1)
+   tile
+   (
+    repeat(x -1…1~0, y -1…1~0)
+    mirror(x 0…1~0, y 0…1~0)
+    )
+   )
+  render
+  (
+   flatmap
+   (
+    frame(x 0, y 0, w 1080, h 1920)
+    repeat(x -1…1~0, y -1…1~0)
+    mirror(x  0…1~0, y  0…1~0)
+    )
+   cubemap
+   (
+    frame(x 0, y 0, w 1080, h 1920)
+    repeat(x -1…1~0, y -1…1~0)
+    mirror(x 0…1~0, y 0…1~0)
+    gravity(0…2~0)
+    on(0…1~0)
+    )
+   plato(on 0…1~0)
+   )
+  )
+ )
+body(left, right)
+    .(shoulder.elbow.wrist
+      (thumb, index, middle, ring, pinky)
+      .(meta, prox, dist)
+      hip.knee.ankle.toes)
+˚˚ (joint(x, y, z) )
 
-   body(left, right)
-   .(shoulder.elbow.wrist
-     (thumb, index, middle, ring, pinky)
-     .(meta, prox, dist)
-     hip.knee.ankle.toes)
-   ˚˚ (joint(x, y, z) )
-
-   skeleton
-   (left
-    (shoulder
-     (elbow
-      (wrist
-       (thumb
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        index
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        middle
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        ring
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        pinky
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-       bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+skeleton
+(left
+ (shoulder
+  (elbow
+   (wrist
+    (thumb
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
       bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-     hip
-     (knee
-      (ankle
-       (toes.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-        bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-       bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     index
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
       bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-     bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-     )
-    right
-    (shoulder
-     (elbow
-      (wrist
-       (thumb
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        index
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        middle
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        ring
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        pinky
-        (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-         bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-        bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-       bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-      )
-     hip
-     (knee
-      (ankle
-       (toes.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-        bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-       bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     middle
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     ring
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     pinky
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
       bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
-    bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
-    )
-   ˚˚ <> ..
+    bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+   bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+  hip
+  (knee
+   (ankle
+    (toes.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+     bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+    bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+   bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+  bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+  )
+ right
+ (shoulder
+  (elbow
+   (wrist
+    (thumb
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     index
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     middle
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     ring
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     pinky
+     (meta.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      prox.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      dist.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+      bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+     bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+    bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+   bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+   )
+  hip
+  (knee
+   (ankle
+    (toes.bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+     bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+    bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+   bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+  bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000))
+ bone (x 0…1, y 0…1, z 0…1, roll %360, pitch %360, yaw %360, mm 0…1000)
+ )
+˚˚ <> ..
