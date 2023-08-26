@@ -1,6 +1,5 @@
 sky { // visual music synth
     main { // main controls
-        fps (1…60~60) // frames per second
         run (0…1~1) // currently running
         anim(0…1~0.5) // animation transition speed
     }
