@@ -2,8 +2,8 @@ model {
     canvas {
         plato {
             shade {
-                phase  (x 0…1, y 0.9…1.1)
-                convex (0.9…1.1~1) 
+                phase  (x 0…1~0.5, y 0.9…1.1) 
+                convex (0.9…1.1~0.9) 
                 colors (x 0…255~0, y 0…1~0)
                 shadow (x 0…1~0, y 0…1~0)
                 invert (0…1~1)
