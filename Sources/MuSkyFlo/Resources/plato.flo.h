@@ -4,7 +4,7 @@ model {
             shade {
                 phase  (x 0…1~0.5, y 0.9…1.1) 
                 convex (0.9…1.1~0.9) 
-                colors (x 0…255~0, y 0…1~0)
+                passthru (0…1~0.8)
                 shadow (x 0…1~0, y 0…1~0)
                 invert (0…1~1)
             }
@@ -20,7 +20,7 @@ _menu.canvas {
         shade (svg "icon.peacock") {
             phase  (sym "calendar.day.timeline.left")
             convex (svg "icon.convex")
-            colors (sym "figure.stair.stepper")
+            passthru (sym "figure.stair.stepper")
             shadow (sym "shadow")
             invert (sym "circle.lefthalf.filled")
         }
