@@ -43,44 +43,44 @@ sky { // visual music synth
 menu {
     SW {
         view {
-            canvas(symbol "photo.artframe") {
-                tile(image "icon.shader.tile.png") {
-                    mirror(symbol "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right")
-                    repeat(symbol "rectangle.grid.2x2")
-                    shift(image "icon.cell.scroll")
-                    tilt(image "icon.pen.tilt")
+            canvas(sym "photo.artframe") {
+                tile(img "icon.shader.tile.png") {
+                    mirror(sym "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right")
+                    repeat(sym "rectangle.grid.2x2")
+                    shift(img "icon.cell.scroll")
+                    tilt(img "icon.pen.tilt")
                 }
-                color(image "icon.pal.main") {
-                    fade(symbol "slider.horizontal.below.rectangle")
-                    plane(symbol "square.3.layers.3d.down.right")
-                    zero(symbol "drop")
-                    one(symbol "drop.fill")
+                color(img "icon.pal.main") {
+                    fade(sym "slider.horizontal.below.rectangle")
+                    plane(sym "square.3.layers.3d.down.right")
+                    zero(sym "drop")
+                    one(sym "drop.fill")
                 }
-                speed(image "icon.speed") {
-                    fps(symbol "speedometer")
-                    run(symbol "goforward")
+                speed(img "icon.speed") {
+                    fps(sym "speedometer")
+                    run(sym "goforward")
                 }
             }
-            brush(symbol "paintbrush.pointed") {
-                size(symbol "circle.circle")
-                press(image "icon.pen.press")
-                tilt(image "icon.pen.tilt") //(symbol "angle")
+            brush(sym "paintbrush.pointed") {
+                size(sym "circle.circle")
+                press(img "icon.pen.press")
+                tilt(img "icon.pen.tilt") //(sym "angle")
             }
-            cell(symbol "circle.grid.3x3") {
-                fade(image "icon.cell.fade")
-                ave(image "icon.cell.ave")
-                melt(image "icon.cell.melt")
-                tunl(image "icon.cell.tunl")
-                zha(image "icon.cell.zha")
-                slide(image "icon.cell.slide")
-                fred(image "icon.cell.fred")
+            cell(sym "circle.grid.3x3") {
+                fade(img "icon.cell.fade")
+                ave(img "icon.cell.ave")
+                melt(img "icon.cell.melt")
+                tunl(img "icon.cell.tunl")
+                zha(img "icon.cell.zha")
+                slide(img "icon.cell.slide")
+                fred(img "icon.cell.fred")
             }
-            cam(symbol "camera") {
-                snap(symbol "camera.shutter.button")
-                fake(symbol "face.dashed")
-                real(symbol "face.smiling")
-                face(symbol "arrow.triangle.2.circlepath.camera")
-                mix(symbol "slider.horizontal.below.rectangle")
+            cam(sym "camera") {
+                snap(sym "camera.shutter.button")
+                fake(sym "face.dashed")
+                real(sym "face.smiling")
+                face(sym "arrow.triangle.2.circlepath.camera")
+                mix(sym "slider.horizontal.below.rectangle")
             }
         }
         model {
@@ -127,44 +127,44 @@ menu {
     }
     SE { // copy southwest corner to southeast corner
         view {
-            canvas(symbol "photo.artframe") {
-                tile(image "icon.shader.tile.png") {
-                    mirror(symbol "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right")
-                    repeat(symbol "rectangle.grid.2x2")
-                    shift(image "icon.cell.scroll")
-                    tilt(image "icon.pen.tilt")
+            canvas(sym "photo.artframe") {
+                tile(img "icon.shader.tile.png") {
+                    mirror(sym "arrowtriangle.left.and.line.vertical.and.arrowtriangle.right")
+                    repeat(sym "rectangle.grid.2x2")
+                    shift(img "icon.cell.scroll")
+                    tilt(img "icon.pen.tilt")
                 }
-                color(image "icon.pal.main") {
-                    fade(symbol "slider.horizontal.below.rectangle")
-                    plane(symbol "square.3.layers.3d.down.right")
-                    zero(symbol "drop")
-                    one(symbol "drop.fill")
+                color(img "icon.pal.main") {
+                    fade(sym "slider.horizontal.below.rectangle")
+                    plane(sym "square.3.layers.3d.down.right")
+                    zero(sym "drop")
+                    one(sym "drop.fill")
                 }
-                speed(image "icon.speed") {
-                    fps(symbol "speedometer")
-                    run(symbol "goforward")
+                speed(img "icon.speed") {
+                    fps(sym "speedometer")
+                    run(sym "goforward")
                 }
             }
-            brush(symbol "paintbrush.pointed") {
-                size(symbol "circle.circle")
-                press(image "icon.pen.press")
-                tilt(image "icon.pen.tilt") //(symbol "angle")
+            brush(sym "paintbrush.pointed") {
+                size(sym "circle.circle")
+                press(img "icon.pen.press")
+                tilt(img "icon.pen.tilt") //(sym "angle")
             }
-            cell(symbol "circle.grid.3x3") {
-                fade(image "icon.cell.fade")
-                ave(image "icon.cell.ave")
-                melt(image "icon.cell.melt")
-                tunl(image "icon.cell.tunl")
-                zha(image "icon.cell.zha")
-                slide(image "icon.cell.slide")
-                fred(image "icon.cell.fred")
+            cell(sym "circle.grid.3x3") {
+                fade(img "icon.cell.fade")
+                ave(img "icon.cell.ave")
+                melt(img "icon.cell.melt")
+                tunl(img "icon.cell.tunl")
+                zha(img "icon.cell.zha")
+                slide(img "icon.cell.slide")
+                fred(img "icon.cell.fred")
             }
-            cam(symbol "camera") {
-                snap(symbol "camera.shutter.button")
-                fake(symbol "face.dashed")
-                real(symbol "face.smiling")
-                face(symbol "arrow.triangle.2.circlepath.camera")
-                mix(symbol "slider.horizontal.below.rectangle")
+            cam(sym "camera") {
+                snap(sym "camera.shutter.button")
+                fake(sym "face.dashed")
+                real(sym "face.smiling")
+                face(sym "arrow.triangle.2.circlepath.camera")
+                mix(sym "slider.horizontal.below.rectangle")
             }
         }
         model {

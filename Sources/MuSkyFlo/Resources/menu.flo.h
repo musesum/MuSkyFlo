@@ -5,7 +5,7 @@ _menu  {
             repeat (svg "icon.repeat.arrows")
             shift  (svg "icon.direction")
         }
-        color(img "icon.pal.main") {
+        color (img "icon.pal.main") {
             fade   (svg "icon.gradient")
             fill_0 (sym "drop")
             fill_1 (sym "drop.fill")
@@ -26,10 +26,10 @@ _menu  {
         fade  (img "icon.cell.fade" )
         ave   (img "icon.cell.ave"  )
         melt  (img "icon.cell.melt" )
-        tunl  (img "icon.cell.tunl" )
+        //tunl  (img "icon.cell.tunl" )
         zha   (img "icon.cell.zha"  )
         slide (img "icon.cell.slide")
-        fred  (img "icon.cell.fred" )
+        //fred  (img "icon.cell.fred" )
     }
     camera (sym "camera") {
         stream (sym "video")
