@@ -18,11 +18,11 @@ model {
 _menu.canvas {
     plato(svg "icon.plato.wire") {
         shade (svg "icon.peacock") {
-            phase  (sym "calendar.day.timeline.left")
-            convex (svg "icon.convex")
+            phase    (sym "calendar.day.timeline.left")
+            convex   (svg "icon.convex")
             passthru (sym "figure.stair.stepper")
-            shadow (sym "shadow")
-            invert (sym "circle.lefthalf.filled")
+            shadow   (sym "shadow")
+            invert   (sym "circle.lefthalf.filled")
         }
         zoom  (svg "icon.zoom")
         morph (svg "icon.counter")
