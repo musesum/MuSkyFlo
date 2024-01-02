@@ -24,13 +24,13 @@ midi { // musical instrument device interface
         zoom    (cc ==  4, val 0_127) <> model.canvas.plato.zoom
         convex  (cc ==  5, val 0_127) <> model.canvas.plato.shade.convex
         colorY  (cc ==  6, val 0_127) <> model.canvas.plato.shade.colors(y val)
-        camix   (cc ==  9, val 0_127) <> model.camix.mix(val)
+        camix   (cc ==  9, val 0_127) <> model.camera.mix(val)
         fade    (cc == 10, val 0_127) <> model.canvas.color.fade(x val)
         plane   (cc == 11, val 0_127) <> model.canvas.color.fade(y val)
-        shiftX  (cc == 12, val 0_127) <> model.canvas.tile.shift(x val)
-        shiftY  (cc == 13, val 0_127) <> model.canvas.tile.shift(y val)
-        repeatX (cc == 14, val 0_127) <> model.canvas.tile.repeat(x val)
-        repeatY (cc == 15, val 0_127) <> model.canvas.tile.repeat(y val)
+        shiftX  (cc == 12, val 0_127) <> model.canvas.shift(x val)
+        shiftY  (cc == 13, val 0_127) <> model.canvas.shift(y val)
+        repeatX (cc == 14, val 0_127) <> model.canvas.repeat(x val)
+        repeatY (cc == 15, val 0_127) <> model.canvas.repeat(y val)
     }
     input.controller >> cc˚.
     output.controller << cc.skypad˚.

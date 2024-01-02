@@ -20,10 +20,10 @@ midi { // musical instrument device interface
 
     cc {
         skypad {
-            zoom    (cc ==  4, val 0_127) <> model.canvas.plato.zoom
-            convex  (cc ==  5, val 0_127) <> model.canvas.plato.shade.convex
-            colorY  (cc ==  6, val 0_127) <> model.canvas.plato.shade.colors(y val)
-            camix   (cc ==  9, val 0_127) <> model.camix.mix(val)
+            zoom    (cc ==  4, val 0_127) <> model.plato.zoom
+            convex  (cc ==  5, val 0_127) <> model.plato.shade.convex
+            colorY  (cc ==  6, val 0_127) <> model.plato.shade.colors(y val)
+            camix   (cc ==  9, val 0_127) <> model.camera.mix(val)
             fade    (cc == 10, val 0_127) <> model.canvas.color.fade(x val)
             plane   (cc == 11, val 0_127) <> model.canvas.color.fade(y val)
             shiftX  (cc == 12, val 0_127) <> model.canvas.tile.shift(x val)
