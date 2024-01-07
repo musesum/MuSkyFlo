@@ -61,9 +61,9 @@ _menu  {
         motion (sym "gyroscope")
         rotate (svg "icon.rotate")
         show (sym "eye") {
-            cubemap (sym "cube.fill")
-            canvas (svg "icon.canvas")
-            plato   (svg "icon.plato.show")
+            cubemap (sym "cube")
+            canvas  (svg "icon.canvas")
+            plato   (svg "icon.dodec")
         }
     }
 }

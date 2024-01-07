@@ -15,8 +15,7 @@ model {
             midi.cc.skypad.repeatY(val y))
         
         color {
-            fade (x 0…1,
-                  y 0…1)
+            fade (x 0…1, y 0…1)
             >> shader.compute.color
             >> sky.color.xfade
             ^ sky.main.anim
@@ -36,7 +35,7 @@ model {
             wire (%2~0)
             phase (0_10~1)
             harmonic (0_6~1)
-            show (%2~0) <> (model.more.show.plato, model.more.show.cubemap)
+            show (%2~0) >> (model.more.show.plato, model.more.show.cubemap)
             run (%2~1)
         }
         passthru (0…1~0.8)
