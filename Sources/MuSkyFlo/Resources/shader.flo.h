@@ -25,12 +25,12 @@ shader {
     }
     render {
         flatmap {
-            frame  (x 0, y 0, w 1080, h 1920)
+            frame  (x 0, y 0, w 2160, h 3840)
             repeat (x -1…1~0, y -1…1~0)
             mirror (x  0…1~0, y  0…1~0)
         }
         cubemap {
-            frame   (x 0, y 0, w 1080, h 1920)
+            frame   (x 0, y 0, w 2160, h 3840)
             repeat  (x -1…1~0, y -1…1~0)
             mirror  (x  0…1~0, y  0…1~0)
             rotate  (x  0…1~0, y  0…1~0)
