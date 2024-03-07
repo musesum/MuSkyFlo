@@ -88,7 +88,7 @@ menu {
                 tile {
                     mirror(x 0…1=0, y 0…1=0)<>shader.pipe.render.mirror
                     repeat(x -1…1=0, y -1…1=0)<>shader.pipe.render.repeat
-                    shift(x 0…1=0.5, y 0…1=0.5)<>shader.pipe.draw
+                    shift(x 0…1=0.5, y 0…1=0.5)//<>shader.pipe.draw
                     tilt(tog 0…1=0)<>sky.input.tilt
                 }
                 color {

@@ -25,7 +25,7 @@ _menu  {
             show     (sym "eye")
             run      (svg "icon.counter")
         }
-        passthru (svg "icon.opacity")
+        reflect  (svg "icon.opacity")
         shadow   (sym "shadow")
         invert   (svg "icon.invert")
         zoom     (svg "icon.zoom")

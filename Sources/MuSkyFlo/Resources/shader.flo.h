@@ -3,7 +3,7 @@ shader {
         draw
         slide
         color
-        flatmap
+        cubemap
         plato
     }
     cell {
@@ -21,13 +21,13 @@ shader {
         camera { on(0…1~0) front (%2~1) }
         camix  { mix(0…1~0.5) }
         color (y 0…1)
-
     }
     render {
         flatmap {
             frame  (x 0, y 0, w 2160, h 3840)
             repeat (x -1…1~0, y -1…1~0)
             mirror (x  0…1~0, y  0…1~0)
+            on (%2~0)
         }
         cubemap {
             frame   (x 0, y 0, w 2160, h 3840)
@@ -35,7 +35,7 @@ shader {
             mirror  (x  0…1~0, y  0…1~0)
             rotate  (x  0…1~0, y  0…1~0)
             gravity (0…2~0)
-            on (%2~0)
+            on (%2~1)
         }
         plato { on (%2~0) }
     }

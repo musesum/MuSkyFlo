@@ -16,8 +16,7 @@ model {
         
         color {
             fade (x 0…1, y 0…1)
-            >> shader.compute.color
-            >> sky.color.xfade
+            >> (shader.compute.color sky.color.xfade)
             ^ sky.main.anim
 
             fill_0 (%1) <> sky.draw.screen.fill(0)
@@ -38,7 +37,7 @@ model {
             show (%2~0) >> (model.more.show.plato, model.more.show.cubemap)
             run (%2~1)
         }
-        passthru (0…1~0.8)
+        reflect (0…1~0.8)
         invert (0…1~1)
         shadow (x 0…1~0, y 0…1~0)
         zoom  (0…1~0.5) ^ sky.main.anim
