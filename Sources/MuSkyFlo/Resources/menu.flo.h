@@ -1,10 +1,9 @@
-_menu  {
+model_  {
     canvas (svg "icon.canvas") {
-
         mirror (svg "icon.mirror")
         repeat (svg "icon.repeat.arrows")
         shift  (svg "icon.direction")
-
+        
         color (img "icon.pal.main") {
             fade   (svg "icon.gradient")
             fill_0 (sym "drop")
@@ -47,6 +46,22 @@ _menu  {
         mix    (sym "camera.filters")
         fade   (svg "icon.gradient")
     }
+    hand (svg "hands.both") {
+        left (svg "hand.left") {
+            thumb   {      knuc base inter tip }
+            index   { meta knuc base inter tip }
+            middle  { meta knuc base inter tip }
+            ring    { meta knuc base inter tip }
+            little  { meta knuc base inter tip }
+        }
+        right (svg "hand.right") {
+            thumb   {      knuc base inter tip }
+            index   { meta knuc base inter tip }
+            middle  { meta knuc base inter tip }
+            ring    { meta knuc base inter tip }
+            little  { meta knuc base inter tip }
+        }
+    }
     more (svg "icon.more") {
         speed (img "icon.speed") {
             fps  (sym "speedometer")
@@ -64,22 +79,6 @@ _menu  {
             cubemap (sym "cube")
             canvas  (svg "icon.canvas")
             plato   (svg "icon.dodec")
-        }
-    }
-    hand (svg "hands.both") {
-        left (svg "hand.left") {
-            thumb   {      knuc base inter tip }
-            index   { meta knuc base inter tip }
-            middle  { meta knuc base inter tip }
-            ring    { meta knuc base inter tip }
-            little  { meta knuc base inter tip }
-        }
-        right (svg "hand.right") {
-            thumb   {      knuc base inter tip }
-            index   { meta knuc base inter tip }
-            middle  { meta knuc base inter tip }
-            ring    { meta knuc base inter tip }
-            little  { meta knuc base inter tip }
         }
     }
 }
