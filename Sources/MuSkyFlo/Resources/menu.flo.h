@@ -66,4 +66,20 @@ _menu  {
             plato   (svg "icon.dodec")
         }
     }
+    hand (svg "hands.both") {
+        left (svg "hand.left") {
+            thumb   {      knuc base inter tip }
+            index   { meta knuc base inter tip }
+            middle  { meta knuc base inter tip }
+            ring    { meta knuc base inter tip }
+            little  { meta knuc base inter tip }
+        }
+        right (svg "hand.right") {
+            thumb   {      knuc base inter tip }
+            index   { meta knuc base inter tip }
+            middle  { meta knuc base inter tip }
+            ring    { meta knuc base inter tip }
+            little  { meta knuc base inter tip }
+        }
+    }
 }
