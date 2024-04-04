@@ -29,6 +29,11 @@ model {
         }
     }
     plato {
+        convex (0.9…1.1~0.9)
+        zoom  (0…1~0.5) ^ sky.main.anim
+        shadow (x 0…1~0, y 0…1~0)
+        invert (0…1~1)
+        reflect (0…1~0.8)
         more {
             wire (%2~0)
             phase (0_10~1)
@@ -36,12 +41,6 @@ model {
             show (%2~0) >> (model.more.show.plato, model.more.show.cubemap)
             run (%2~1)
         }
-        reflect (0…1~0.8)
-        invert (0…1~1)
-        shadow (x 0…1~0, y 0…1~0)
-        zoom  (0…1~0.5) ^ sky.main.anim
-        convex (0.9…1.1~0.9)
-
     }
     cell {
         fade  (0.2…2~1) <> shader.cell.fade
@@ -58,7 +57,6 @@ model {
         mix (0…1~0.5) <> shader.compute.camix.mix
         fade (x 0…1~0.5, y 0…1~0.1) <> canvas.color.fade
     }
-
     hand {
         left {
             thumb {
@@ -227,3 +225,4 @@ model {
         }
     }
 }
+ 

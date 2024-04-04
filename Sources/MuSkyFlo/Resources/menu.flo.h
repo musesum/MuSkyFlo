@@ -17,6 +17,11 @@ model_  {
         }
     }
     plato (svg "icon.plato.icosa") {
+        convex   (svg "icon.convex")
+        zoom     (svg "icon.zoom")
+        invert   (svg "icon.invert")
+        shadow   (sym "shadow")
+        reflect  (svg "icon.opacity")
         more (svg "icon.more") {
             wire     (svg "icon.wireframe")
             phase    (svg "icon.plato.phase")
@@ -24,11 +29,6 @@ model_  {
             show     (sym "eye")
             run      (svg "icon.counter")
         }
-        reflect  (svg "icon.opacity")
-        shadow   (sym "shadow")
-        invert   (svg "icon.invert")
-        zoom     (svg "icon.zoom")
-        convex   (svg "icon.convex")
     }
     cell (svg "icon.cellular.automata") {
         fade  (img "icon.cell.fade" )
